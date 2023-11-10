@@ -1,0 +1,1 @@
+This is the backend node application for the Custom Cookbook project, using express and sequelize by Laura Aydelotte.
