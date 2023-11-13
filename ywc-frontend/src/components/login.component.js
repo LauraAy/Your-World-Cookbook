@@ -1,10 +1,10 @@
-import React, { useState, useRef, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom"
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { Paper, Box, Grid, Button, FillledInput, OutlinedInput, InputLabel, InputAdornment, 
-IconButton, FormHelperText, FormControl, FormControlLabel, Checkbox, TextField, Typography} from '@mui/material';
+import { Paper, Box, Button, OutlinedInput, InputLabel, InputAdornment, 
+IconButton, FormControl, TextField, Typography} from '@mui/material';
 import { Visibility, VisibilityOff,} from '@mui/icons-material';
 import AuthService from "../services/auth.service";
 
@@ -66,10 +66,9 @@ const LoginComponent = () => {
   };
 
   return (
-    <Fragment>
-      <Paper>
-        <Typography variant="h6" align="center" margin="dense">
-          Login to Start Cooking!
+    <>
+        <Typography variant="h4" align="center" margin="dense">
+          Sign In to Start Cooking!
         </Typography>
           <Box sx={{ ml: "10%", mr: "10%" }}>
             <FormControl fullWidth>
@@ -119,12 +118,11 @@ const LoginComponent = () => {
             color="primary"
             onClick={handleSubmit(handleLogin)}
           >
-            Login
+            Sign In
           </Button>
         </Box>
         </Box>
-      </Paper>
-    </Fragment>
+    </>
   )
 };
 

@@ -1,16 +1,12 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
-import { Box, Button, Card, FormControl, Grid, Item, Stack, TextField, Typography } from '@mui/material';
-import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
-import { red, pink, purple, blue, green } from '@mui/material/colors';
+import { Box, Button, TextField, Typography } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
 import RecipeDataService from "../services/recipe.service";
 import RegionDataService from "../services/region.service";
 import RegionRecipeDataService from "../services/regionRecipe.service";
-import { NavItem } from "react-bootstrap";
+
 
 const styles = {
   borderBox: {
@@ -55,7 +51,7 @@ const [submitted, setSubmitted] = useState(false)
 useEffect(() => {
     retrieveRecipe(id);
     retrieveRegions();
-  }, []);
+  }, [id]);
 
   const retrieveRecipe = id => {
     RecipeDataService.get(id)

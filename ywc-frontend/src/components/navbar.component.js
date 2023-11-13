@@ -60,7 +60,6 @@ const NavbarComponent = () => {
         <Toolbar disableGutters>
 					{ currentUser ? (
 					<>
-						{/* <BakeryDining sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
 						<Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
 							<img 
 								src={LogoDarkBG} 
@@ -199,7 +198,13 @@ const NavbarComponent = () => {
 					</>
 					):(
 					<>
-						{/* <BakeryDining sx={{ mr: 1 }} /> */}
+						<Box sx={{ display: { xs: 'none', sm: 'flex', md: 'flex' }, mr: 1 }}>
+							<img 
+								src={LogoDarkBG} 
+								alt="Logo with noodles inside a bowl that looks like a globe and the words Your World Cookbook."
+								style={{ maxHeight: '120px', margin: '5px'}}
+							/>
+						</Box>
 						<Typography
 							variant="h4"
 							component="a" 

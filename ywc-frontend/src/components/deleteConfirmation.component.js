@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React from "react";
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
 const DeleteConfirmation = ({ openDialog, closeDialog, confirmDialog, type, message, text}) => {

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate} from "react-router-dom";
 import CreatorRecipeDataService from "../services/creatorRecipe.service";
 import { Box, Button, Divider, Grid, Tooltip, Typography, } from '@mui/material';
-import { Delete, WidthWideTwoTone } from  '@mui/icons-material';
+import { Delete } from  '@mui/icons-material';
 import creatorImg from "../images/creator.png"
 
 const CreatorViewComponent = params => {

@@ -6,9 +6,7 @@ import * as Yup from 'yup';
 import { Box, Button, Divider, FormControl,  Paper, TextField, Typography } from '@mui/material';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import PairingDataService from "../services/pairing.service";
-import PairingRecipeDataService from "../services/pairingRecipe.service";
 import RecipeDataService from "../services/recipe.service";
-import DeleteConfirmation from "../components/deleteConfirmation.component.js";
 
 const styles = {
   borderBox: {

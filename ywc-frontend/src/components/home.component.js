@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Box, Button, Card, CardMedia, Container, Divider, Grid, Typography} from '@mui/material';
+import {Box, Button, Card, CardMedia, Divider, Grid, Typography} from '@mui/material';
 import {DoubleArrow} from '@mui/icons-material';
 import AuthService from "../services/auth.service";
 import cuttingBoard from "../images/cuttingBoard.png";

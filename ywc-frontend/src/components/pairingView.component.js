@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import PairingRecipeDataService from "../services/pairingRecipe.service";
 import RecipeDataService from "../services/recipe.service";
 import { Box, Button, Divider, Grid, Tooltip, Typography, } from '@mui/material';

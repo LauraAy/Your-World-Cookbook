@@ -31,7 +31,6 @@ db.region_recipe = require("../models/region_recipe.model.js")(sequelize, Sequel
 db.region = require("../models/region.model.js")(sequelize, Sequelize);
 db.stateProvince = require("../models/stateProvince.model.js")(sequelize, Sequelize);
 db.user = require("../models/user.model.js")(sequelize, Sequelize);
-db.role = require("../models/role.model.js")(sequelize, Sequelize);
 
 //Define region_recipe join table
 db.region_recipe = sequelize.define('region_recipes', {
@@ -99,20 +98,5 @@ db.recipe.belongsTo (db.user, {
   foreignKey: "userId",
   as: "users",
 });
-
-//Many to many relationship between user and roles.
-db.role.belongsToMany(db.user, {
-  through: "user_roles",
-  foreignKey: "roleId",
-  otherKey: "userId"
-});
-db.user.belongsToMany(db.role, {
-  through: "user_roles",
-  foreignKey: "userId",
-  otherKey: "roleId"
-});
-
-
-db.ROLES = ["user", "admin", "moderator"];
 
 module.exports = db;

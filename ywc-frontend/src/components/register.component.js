@@ -1,18 +1,20 @@
-import React, { useState, useRef, Fragment } from "react";
-import { useForm, Controller } from 'react-hook-form';
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { Paper, Box, Grid, Button, FillledInput, OutlinedInput, InputLabel, InputAdornment, 
-IconButton, FormHelperText, FormControl, FormControlLabel, Checkbox, TextField, Typography} from '@mui/material';
+import { Box, Grid, Button, OutlinedInput, InputLabel, InputAdornment, 
+IconButton, FormControl, TextField, Typography} from '@mui/material';
 import { Visibility, VisibilityOff,} from '@mui/icons-material';
 
 import AuthService from "../services/auth.service";
 
 const RegisterComponent = () => {
+  let navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -37,7 +39,6 @@ const RegisterComponent = () => {
 
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors }
   } = useForm({
@@ -79,10 +80,14 @@ const RegisterComponent = () => {
     event.preventDefault();
   };
 
+  //navigate to login page
+  const goLogin = () => {
+    navigate("/login")
+  }
+
   return (
-    <Fragment>
-      <Paper>
-        {!successful && (
+  <>
+    {!successful && (
         <Box px={3} py={2}>
           <Typography variant="h6" align="center" margin="dense">
             Register to Start Your Cookbook Now!
@@ -190,11 +195,19 @@ const RegisterComponent = () => {
         )}
         {successful && (
         <>
-          <h1>You registered succesfully!</h1>
+          <Typography variant="h4">You registered succesfully!</Typography>
+          <Box sx={{mt: 3, ml: 2}}>
+            <Typography variant="h5">Now sign in to get started.</Typography>
+            <Button
+              variant="contained" 
+              color="primary"
+              onClick={goLogin}>
+                Go Sign In
+            </Button>
+          </Box>
         </>
         )}
-      </Paper>
-    </Fragment>
+  </>
   )
 }
 

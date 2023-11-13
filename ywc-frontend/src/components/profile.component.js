@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
-import {Box, Button, Card, CardMedia, Divider, Grid, Typography} from '@mui/material';
+import {Box, Button, Typography} from '@mui/material';
 
 const ProfileComponent = () => {
   let navigate = useNavigate();

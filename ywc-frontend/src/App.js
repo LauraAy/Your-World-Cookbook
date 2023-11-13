@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import NavbarComponent from "./components/navbar.component";
-import {createTheme, colors, createColor, ThemeProvider} from '@mui/material';
-import { red, purple, blue, green, grey, pink, orange } from '@mui/material/colors';
+import {createTheme, ThemeProvider} from '@mui/material';
+import { red, purple, blue, green, grey } from '@mui/material/colors';
 import '@fontsource-variable/montserrat';
 
 import "./App.css";
