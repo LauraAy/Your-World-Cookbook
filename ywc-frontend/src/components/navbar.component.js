@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import AuthService from "../services/auth.service";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container,
-Avatar, Button, Tooltip, MenuItem }from '@mui/material';
-import { MenuBook, BakeryDining }from '@mui/icons-material';
+	Button, Tooltip, MenuItem }from '@mui/material';
+import { MenuBook }from '@mui/icons-material';
 import LogoDarkBG from '../images/ywcLogoDarkBG.png'
 
 const NavbarComponent = () => {
