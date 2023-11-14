@@ -1,12 +1,51 @@
 const express = require("express");
-const cors = require("cors");
+const http = require('http')
+const Server = require("socket.io").Server
 const app = express();
+const path = require('path')
+const cors = require("cors");
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
+const server = http.createServer(app)
+const io = new Server(server , {
+  cors:{
+    origin:"*"
+  }
+})
 
-app.use(cors(corsOptions));
+const _dirname = path.dirname("")
+const buildPath = path.join(_dirname  , "../ywc-frontend/build");
+
+app.use(express.static(buildPath))
+
+app.get("/*", function(req, res){
+  res.sendFile(
+    path.join(__dirname, "../ywc-frontend/build/index.html"),
+        function (err) {
+          if (err) {
+            res.status(500).send(err);
+          }
+        }
+      );
+
+})
+
+io.on("connection" , (socket) => {
+  console.log('We are connected')
+
+  socket.on("chat" , chat => {
+    io.emit('chat' , chat)
+  } )
+
+  socket.on('disconnect' , ()=> {
+    console.log('disconnected')
+  })
+})
+
+// var corsOptions = {
+//   origin: "http://localhost:8081"
+// };
+
+// app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -48,11 +87,12 @@ require('./app/routes/everything.routes')(app);
 require('./app/routes/recipeSome.routes')(app);
 require('./app/routes/userRecipe.routes')(app);
 
+server.listen(5001 , () => console.log('Listening to port 5001'))
 
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
+// // set port, listen for requests
+// const PORT = process.env.PORT || 8080;
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}.`);
+// });
 
 
