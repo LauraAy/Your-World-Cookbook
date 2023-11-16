@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import EverythingDataService from "../services/everything.service";
 import RecipeViewComponent from '../components/recipeView.component.js'
 import RegionViewComponent from '../components/regionView.component.js'
@@ -7,9 +7,6 @@ import CreatorViewComponent from "../components/creatorView.component";
 import PairingViewComponent from "../components/pairingView.component";
 import { Accordion, AccordionSummary, AccordionDetails, Box, Button, Typography} from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
-import WorldIconTest from '../images/worldIconTest.jpg'
-// import { makeStyles } from "@material-ui/core/styles";
-
 
 const RecipeViewPage = params => {
   const { id } = useParams();

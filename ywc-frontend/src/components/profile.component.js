@@ -7,21 +7,6 @@ const ProfileComponent = () => {
   let navigate = useNavigate();
   const currentUser = AuthService.getCurrentUser();
 
-  // const [currentUser, setCurrentUser] = useState ([]);
-
-  // const getCurrentUser = id => {
-  //   AuthService.getOne(id)
-  //   .then(response => {
-  //     setCurrentUser(response.data)
-  //     console.log(response.data)
-  //   })
-  // } 
-
-  // useEffect(() => {
-  //   if(localUser.id)
-  //   getCurrentUser(localUser.id);
-  // }, [localUser.id]);
-
   //navigate to edit recipe
   const editUser = () => {
     navigate("/profile/edit")

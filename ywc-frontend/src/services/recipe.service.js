@@ -13,7 +13,7 @@ const get = id => {
 };
 
 const getWithRegions = id => {
-return http.get('recipes/regions/${id}');
+return http.get(`recipes/regions/${id}`);
 }
 
 const create = data => {

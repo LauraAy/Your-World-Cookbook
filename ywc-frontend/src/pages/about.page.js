@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
-import {Box, Button, Card, CardMedia, Divider, Grid, Typography} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import {Box, Card, Typography} from '@mui/material';
 import Logo from '../images/ywcLogo.png';
 
 const styles = {

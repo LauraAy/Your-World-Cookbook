@@ -1,9 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { Paper, Box, Button, OutlinedInput, InputLabel, InputAdornment, 
+import { Box, Button, OutlinedInput, InputLabel, InputAdornment, 
 IconButton, FormControl, TextField, Typography} from '@mui/material';
 import { Visibility, VisibilityOff,} from '@mui/icons-material';
 import AuthService from "../services/auth.service";

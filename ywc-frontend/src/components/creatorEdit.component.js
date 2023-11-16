@@ -3,10 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { Box, Button, FormControl,  Paper, TextField, Typography } from '@mui/material';
+import { Box, Button, FormControl, TextField, Typography } from '@mui/material';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import CreatorDataService from "../services/creator.service";
-import CreatorRecipeDataService from "../services/creatorRecipe.service";
 
 const styles = {
 	borderBox: {

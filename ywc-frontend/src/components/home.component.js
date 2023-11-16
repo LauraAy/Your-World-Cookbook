@@ -8,11 +8,9 @@ import globe from "../images/globe.png"
 import creator from "../images/creator.png"
 import pairing from "../images/pairing.png"
 import { purple, blue, green } from '@mui/material/colors';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { StayPrimaryLandscape } from "@mui/icons-material";
-
 
 const HomeComponent = () => {
   let navigate = useNavigate();

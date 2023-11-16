@@ -4,9 +4,6 @@ import RecipeDataService from "../services/recipe.service";
 import { Box, Button, Divider, Tooltip, Typography, } from '@mui/material';
 import parser from "html-react-parser";
 import recipe from "../images/recipe2.png";
-import creator from "../images/creator.png";
-import pairing from "../images/pairing.png";
-
 
 const RecipeViewComponent = props => {
   let navigate = useNavigate();
