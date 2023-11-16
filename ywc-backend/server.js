@@ -89,7 +89,7 @@ require('./app/routes/userRecipe.routes')(app);
 
 server.listen(5001 , () => console.log('Listening to port 5001'))
 
-// // set port, listen for requests
+// set port, listen for requests
 // const PORT = process.env.PORT || 8080;
 // app.listen(PORT, () => {
 //   console.log(`Server is running on port ${PORT}.`);
