@@ -68,7 +68,11 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/core": "^7.23.3",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/plugin-transform-private-property-in-object": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "eslint": "^8.53.0"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.2"
