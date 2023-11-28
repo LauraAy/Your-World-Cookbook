@@ -42,7 +42,7 @@ io.on("connection" , (socket) => {
 })
 
 // var corsOptions = {
-//   origin: "http://localhost:8081"
+//   origin: "http://localhost:5001"
 // };
 
 // app.use(cors(corsOptions));
@@ -87,12 +87,12 @@ require('./app/routes/everything.routes')(app);
 require('./app/routes/recipeSome.routes')(app);
 require('./app/routes/userRecipe.routes')(app);
 
-server.listen(5001 , () => console.log('Listening to port 5001'))
+// server.listen(5001 , () => console.log('Listening to port 5001'))
 
 // set port, listen for requests
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}.`);
-// });
+const PORT = process.env.PORT || 3306;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
 
 
