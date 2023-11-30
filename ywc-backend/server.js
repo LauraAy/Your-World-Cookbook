@@ -41,11 +41,11 @@ io.on("connection" , (socket) => {
   })
 })
 
-// var corsOptions = {
-//   origin: "http://localhost:5001"
-// };
+var corsOptions = {
+  origin: "http://localhost:5000"
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(express.json());
