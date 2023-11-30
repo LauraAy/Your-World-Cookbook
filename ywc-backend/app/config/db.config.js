@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "ubuntu@ec2-13-56-140-174.us-west-1.compute.amazonaws.com",
+    HOST: "localhost",
     USER: "lauraay",
     PASSWORD: "4QLpa44!",
     DB: "cookbookdb",
