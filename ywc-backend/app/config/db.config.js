@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "172.31.20.172",
+    HOST: "localhost",
     USER: "lauraay",
     PASSWORD: "4QLpa44!",
     DB: "cookbookdb",
