@@ -1,5 +1,6 @@
 module.exports = {
     HOST: "localhost",
+    PORT: "5000",
     USER: "lauraay",
     PASSWORD: "4QLpa44!",
     DB: "cookbookdb",
