@@ -12,37 +12,37 @@ const io = new Server(server , {
   }
 })
 
-const _dirname = path.dirname("")
-const buildPath = path.join(_dirname  , "../ywc-frontend/build");
+// const _dirname = path.dirname("")
+// const buildPath = path.join(_dirname  , "../ywc-frontend/build");
 
-app.use(express.static(buildPath))
+// app.use(express.static(buildPath))
 
-app.get("/*", function(req, res){
-  res.sendFile(
-    path.join(__dirname, "../ywc-frontend/build/index.html"),
-        function (err) {
-          if (err) {
-            res.status(500).send(err);
-          }
-        }
-      );
+// app.get("/*", function(req, res){
+//   res.sendFile(
+//     path.join(__dirname, "../ywc-frontend/build/index.html"),
+//         function (err) {
+//           if (err) {
+//             res.status(500).send(err);
+//           }
+//         }
+//       );
 
-})
+// })
 
-io.on("connection" , (socket) => {
-  console.log('We are connected')
+// io.on("connection" , (socket) => {
+//   console.log('We are connected')
 
-  socket.on("chat" , chat => {
-    io.emit('chat' , chat)
-  } )
+//   socket.on("chat" , chat => {
+//     io.emit('chat' , chat)
+//   } )
 
-  socket.on('disconnect' , ()=> {
-    console.log('disconnected')
-  })
-})
+//   socket.on('disconnect' , ()=> {
+//     console.log('disconnected')
+//   })
+// })
 
 var corsOptions = {
-  origin: "http://localhost:5000"
+  origin: "http://localhost:8080"
 };
 
 app.use(cors(corsOptions));
