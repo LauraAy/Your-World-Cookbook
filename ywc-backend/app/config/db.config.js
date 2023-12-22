@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "localhost",
+    HOST: "https://ec2-3-101-118-14.us-west-1.compute.amazonaws.com/",
     PORT: "5000",
     USER: "lauraay",
     PASSWORD: "4QLpa44!",
@@ -12,3 +12,4 @@ module.exports = {
       idle: 10000
     }
   };
+
