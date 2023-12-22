@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "https://ec2-3-101-118-14.us-west-1.compute.amazonaws.com/",
+    HOST: "ip-172-31-20-172.us-west-1.compute.internal",
     PORT: "5000",
     USER: "lauraay",
     PASSWORD: "4QLpa44!",
