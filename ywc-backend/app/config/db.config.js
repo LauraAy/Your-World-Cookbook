@@ -1,9 +1,9 @@
 module.exports = {
-    HOST: "ip-172-31-20-172.us-west-1.compute.internal",
+    HOST: "ywcdb.cjo8ekeogu3z.us-west-1.rds.amazonaws.com",
     PORT: "3306",
-    USER: "lauraay",
-    PASSWORD: "4QLpa44!",
-    DB: "cookbookdb",
+    USER: "admin",
+    PASSWORD: "YWCdb1564",
+    DB: "ywcdb",
     dialect: "mysql",
     pool: {
       max: 5,
