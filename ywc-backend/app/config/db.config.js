@@ -1,6 +1,6 @@
 module.exports = {
     HOST: "ip-172-31-20-172.us-west-1.compute.internal",
-    PORT: "5000",
+    PORT: "3306",
     USER: "lauraay",
     PASSWORD: "4QLpa44!",
     DB: "cookbookdb",
