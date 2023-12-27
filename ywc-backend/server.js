@@ -42,7 +42,7 @@ const io = new Server(server , {
 // })
 
 var corsOptions = {
-  origin: "http://localhost:8080"
+  origin: "http://ec2-13-56-232-141.us-west-1.compute.amazonaws.com/api"
 };
 
 app.use(cors(corsOptions));
