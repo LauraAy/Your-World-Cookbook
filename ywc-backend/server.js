@@ -42,7 +42,7 @@ const io = new Server(server , {
 // })
 
 var corsOptions = {
-  origin: "http://13.56.232.141"
+  origin: "http://yourworldcookbook.com"
 };
 
 app.use(cors(corsOptions));
