@@ -117,8 +117,17 @@ const HomeComponent = () => {
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
+      color: '#1b5e20',
+      textShadow: '1px 1px 2px #1b5e20, -1px -1px 2px #ffffff',
+      borderRadius: '10px',
+    },
+    overlayLight: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
       color: '#ffffff',
-      textShadow: '2px 2px 3px #1b5e20, -2px -2px 3px #1b5e20',
+      textShadow: '3px 3px 4px #1b5e20, -3px -3px 4px #1b5e20',
       borderRadius: '10px',
     }
   }
@@ -163,13 +172,13 @@ const HomeComponent = () => {
     <>
     <Card style={styles.topCard}>
       <CardMedia image={cuttingBoard} alt="A cutting board with veggies and other food prep."style={styles.media}/> 
-      <Typography variant='h3' color='primary.main' style={styles.overlay} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }}}>
+      <Typography variant='h3' color='primary.main' style={styles.overlayLight} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }}}>
         Welcome to Your World CookBook {currentUser.username}
       </Typography>
-      <Typography variant='h4' color='primary.main' style={styles.overlay} sx={{display: { xs: 'none', sm: 'flex', md: 'none'}}}>
+      <Typography variant='h4' color='primary.main' style={styles.overlayLight} sx={{display: { xs: 'none', sm: 'flex', md: 'none'}}}>
         Welcome to Your World CookBook {currentUser.username}
       </Typography>
-      <Typography variant='h5' color='primary.main' style={styles.overlay} sx={{display: { xs: 'flex', sm: 'none' }}}>
+      <Typography variant='h5' color='primary.main' style={styles.overlayLight} sx={{display: { xs: 'flex', sm: 'none' }}}>
         Welcome {currentUser.username}
       </Typography>
     </Card>
