@@ -211,6 +211,7 @@ useEffect(() => {
         <Box style={styles.borderBox}>
           <Typography variant="h6">Or select a different country from the dropdown.</Typography>
           <Autocomplete
+            defaultValue="United States"
             fullWidth
             disablePortal
             disableClearable
