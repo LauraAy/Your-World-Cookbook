@@ -145,7 +145,7 @@ return (
             Search Recipes By Creator Name
           </Typography>
         </Box>
-        <Box mx={4} mb={2} sx={{ display: 'flex' }}>
+        <Box ml={4} mb={2} sx={{ display: 'flex' }}>
           <Autocomplete
             disablePortal
             id="combo-box-demo"
@@ -155,7 +155,7 @@ return (
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Search By Creator Name" />}
           />
-          <Box mx={2} mt={1}>
+          <Box ml={2} mt={1}>
             <Button variant="contained" onClick={findByCreatorName}>Search</Button>
           </Box>
         </Box>

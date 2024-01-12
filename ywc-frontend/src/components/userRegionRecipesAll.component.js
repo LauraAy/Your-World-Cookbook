@@ -234,7 +234,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
             Search Recipes By Country Name
           </Typography>
         </Box>
-        <Box mx={4} mb={2} sx={{ display: 'flex' }}>
+        <Box ml={4} mb={2} sx={{ display: 'flex' }}>
           <Autocomplete
             disablePortal
             id="combo-box-demo"
@@ -244,7 +244,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Search By Country" />}
           />
-          <Box mx={2} mt={1}>
+          <Box ml={2} mt={1}>
             <Button variant="contained" onClick={findByCountry}>Search</Button>
           </Box>
         </Box>
@@ -254,7 +254,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
               Search Recipes By Region Name
             </Typography>
           </Box>
-          <Box mx={4} mb={2} sx={{ display: 'flex' }}>
+          <Box ml={4} mb={2} sx={{ display: 'flex' }}>
             <Autocomplete
               disablePortal
               id="combo-box-demo"
@@ -265,7 +265,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} label="Search By RegionName" />}
             />
-            <Box mx={2} mt={1}>
+            <Box ml={2} mt={1}>
               <Button variant="contained" onClick={findByRegion}>Search</Button>
             </Box>
           </Box>
