@@ -129,12 +129,12 @@ const RecipesAll = ({clickRegion, clickCreator})=> {
         <Typography variant="h4" gutterBottom>
           All Recipes
         </Typography>
-        <Box mx={4}  sx={{ display: 'flex' }}>
+        <Box  mx={4} sx={{ display: 'flex' }}>
           <Typography variant="subtitle2" gutterBottom>
             Search Recipes By Title
           </Typography>
         </Box>
-        <Box mx={4}  mb={2} sx={{ display: 'flex' }}>
+        <Box  ml={4} mb={2} sx={{ display: 'flex' }}>
           <Autocomplete
             disablePortal
             id="combo-box-demo"
@@ -142,9 +142,9 @@ const RecipesAll = ({clickRegion, clickCreator})=> {
             getOptionLabel={(recipe) => recipe.title }
             onChange={(event, value) => setSelectedRecipe(value)}
             sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Search Recipe Titles" />}
+      f      renderInput={(params) => <TextField {...params} label="Search Recipe Titles" />}
           />
-          <Box mx={2} mt={1}>
+          <Box ml={2} mt={1}>
             <Button variant="contained" onClick={findByTitle}>Search</Button>
           </Box>
         </Box>

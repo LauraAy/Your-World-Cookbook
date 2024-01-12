@@ -136,7 +136,7 @@ const UserRecipesAll = ({clickRegion, clickCreator})=> {
             Search Recipes By Title
           </Typography>
         </Box>
-        <Box mx={4} mb={2} sx={{ display: 'flex' }}>
+        <Box ml={4} mb={2} sx={{ display: 'flex' }}>
           <Autocomplete
             disablePortal
             id="combo-box-demo"
@@ -146,7 +146,7 @@ const UserRecipesAll = ({clickRegion, clickCreator})=> {
             sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Search Recipe Titles" />}
           />
-          <Box mx={2} mt={1}>
+          <Box ml={2} mt={1}>
             <Button variant="contained" onClick={findByTitle}>Search</Button>
           </Box>
         </Box>
