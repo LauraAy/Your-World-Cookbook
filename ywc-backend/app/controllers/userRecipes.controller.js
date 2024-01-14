@@ -169,11 +169,26 @@ exports.searchUserRecipesRegion= (req, res) => {
 
   //Find all users with recipes
 exports.findAllUsersRecipes = (req, res) => {
-  User.findAll ({
-    include: [ 
-      {
+    // const username= req.query.username;
+    // var condition = username ? { username: { [Op.like]: `%${username}%` } } : null;
+  
+  //   User.findAll ()
+  //     .then(data => {
+  //       res.send(data);
+  //     })
+  //     .catch(err => {
+  //       res.status(500).send({
+  //         message:
+  //           err.message || "Some error occurred while retrieving Users."
+  //       });
+  //     });
+  // };
+  User.findAll
+  ({
+    include: [{
         model: Recipe,
-        as: "recipe",
+        as: "recipes",
+        // where: { userId: ('user.id')}
       }],
     })
     .then(data => {
@@ -199,7 +214,7 @@ exports.searchUserRecipes = (req, res) => {
     include: [ 
       {
         model: Recipe,
-        as: "recipe",
+        as: "recipes",
       }],
     })
     .then(data => { 

@@ -21,10 +21,10 @@ exports.allAccess = (req, res) => {
 // Retrieve all users from the database.
 
 exports.findAll = (req, res) => {
-    const username= req.query.username;
-    var condition = username ? { username: { [Op.like]: `%${username}%` } } : null;
+    // const username= req.query.username;
+    // var condition = username ? { username: { [Op.like]: `%${username}%` } } : null;
   
-    User.findAll({ where: condition })
+    User.findAll ()
       .then(data => {
         res.send(data);
       })

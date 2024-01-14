@@ -2,6 +2,12 @@ module.exports = app => {
     const UserRecipes = require("../controllers/userRecipes.controller.js");
     var router = require("express").Router();
 
+    //Retrieve all users with their recipes
+    router.get("/", UserRecipes.findAllUsersRecipes);
+
+    //search username to retrieve user with recipes
+    router.get("/search", UserRecipes.searchUserRecipes);
+    
     //Retreive all Recipes by user id
     router.get("/:id", UserRecipes.findUserRecipes);
 
@@ -20,8 +26,7 @@ module.exports = app => {
     //Retrieve all Recipes by user id with title search
     router.get("/regionSearch/:id", UserRecipes.searchUserRecipesRegion);
 
-    //Retrieve all users with their recipes
-    router.get("/all", UserRecipes.findAllUsersRecipes);
+  
 
     //Search by username
     router.get("/all/search", UserRecipes.searchUserRecipes)
