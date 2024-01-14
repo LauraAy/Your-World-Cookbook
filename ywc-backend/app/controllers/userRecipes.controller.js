@@ -188,7 +188,7 @@ exports.findAllUsersRecipes = (req, res) => {
   };
   
    //Find all users with recipes by username
-exports.searchCreatorRecipes = (req, res) => {
+exports.searchUserRecipes = (req, res) => {
   const username = req.query.username;
   var usernameCondition = username ? { username: { [Op.like]: `%${username}%` } } : null;
   

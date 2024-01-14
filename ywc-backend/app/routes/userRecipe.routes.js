@@ -23,5 +23,8 @@ module.exports = app => {
     //Retrieve all users with their recipes
     router.get("/all", UserRecipes.findAllUsersRecipes);
 
+    //Search by username
+    router.get("/all/search", UserRecipes.searchUserRecipes)
+
   app.use('/api/userRecipes', router);
   };

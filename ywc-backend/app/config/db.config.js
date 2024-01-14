@@ -1,8 +1,22 @@
-module.exports = {
-    HOST: "ywcdb.cjo8ekeogu3z.us-west-1.rds.amazonaws.com",
-    PORT: "3306",
-    USER: "admin",
-    PASSWORD: "YWCdb1564",
+// module.exports = {
+//     HOST: "ywcdb.cjo8ekeogu3z.us-west-1.rds.amazonaws.com",
+//     PORT: "3306",
+//     USER: "admin",
+//     PASSWORD: "YWCdb1564",
+//     DB: "cookbookdb",
+//     dialect: "mysql",
+//     pool: {
+//       max: 5,
+//       min: 0,
+//       acquire: 30000,
+//       idle: 10000
+//     }
+//   };
+
+  module.exports = {
+    HOST: "localhost",
+    USER: "root",
+    PASSWORD: "sql4pen4e",
     DB: "cookbookdb",
     dialect: "mysql",
     pool: {
