@@ -41,8 +41,12 @@ const io = new Server(server , {
 //   })
 // })
 
+// var corsOptions = {
+//   origin: "http://www.yourworldcookbook.com"
+// };
+
 var corsOptions = {
-  origin: "http://www.yourworldcookbook.com"
+  origin: "http://localhost:8080"
 };
 
 app.use(cors(corsOptions));
