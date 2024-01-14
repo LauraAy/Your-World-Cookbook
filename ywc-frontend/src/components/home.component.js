@@ -121,6 +121,7 @@ const HomeComponent = () => {
       textShadow: '1px 1px 2px #1b5e20, -1px -1px 2px #ffffff',
       borderRadius: '10px',
     },
+
     overlayLight: {
       position: 'absolute',
       top: '50%',
@@ -172,13 +173,13 @@ const HomeComponent = () => {
     <>
     <Card style={styles.topCard}>
       <CardMedia image={cuttingBoard} alt="A cutting board with veggies and other food prep."style={styles.media}/> 
-      <Typography variant='h3' color='primary.main' style={styles.overlayLight} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }}}>
+      <Typography variant='h3' color='primary.main' style={styles.overlay} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }}}>
         Welcome to Your World CookBook {currentUser.username}
       </Typography>
-      <Typography variant='h4' color='primary.main' style={styles.overlayLight} sx={{display: { xs: 'none', sm: 'flex', md: 'none'}}}>
+      <Typography variant='h4' color='primary.main' style={styles.overlay} sx={{display: { xs: 'none', sm: 'flex', md: 'none'}}}>
         Welcome to Your World CookBook {currentUser.username}
       </Typography>
-      <Typography variant='h5' color='primary.main' style={styles.overlayLight} sx={{display: { xs: 'flex', sm: 'none' }}}>
+      <Typography variant='h5' color='primary.main' style={styles.overlay} sx={{display: { xs: 'flex', sm: 'none' }}}>
         Welcome {currentUser.username}
       </Typography>
     </Card>
@@ -341,13 +342,13 @@ const HomeComponent = () => {
     <>
     <Card style={styles.card}>
       <CardMedia image={japaneseTea} alt="A japanese tea set and asian style bowl with vegetables inside."style={styles.media2}/> 
-      <Typography variant='h2' color='primary.main' style={styles.overlay} sx={{display: { xs: 'none', sm: 'none', md: 'flex' }}}>
+      <Typography variant='h2' color='primary.main' style={styles.overlayLight} sx={{display: { xs: 'none', sm: 'none', md: 'flex' }}}>
         Welcome to Your World Cookbook
       </Typography>
-      <Typography variant='h3' color='primary.main' style={styles.overlay} sx={{display: { xs: 'none', sm: 'flex', md: 'none'}}}>
+      <Typography variant='h3' color='primary.main' style={styles.overlayLight} sx={{display: { xs: 'none', sm: 'flex', md: 'none'}}}>
         Welcome to Your World Cookbook
       </Typography>
-      <Typography variant='h4' color='primary.main' style={styles.overlay} sx={{display: { xs: 'flex', sm: 'none' }}}>
+      <Typography variant='h4' color='primary.main' style={styles.overlayLight} sx={{display: { xs: 'flex', sm: 'none' }}}>
         Welcome to Your World Cookbook
       </Typography>
     </Card>
