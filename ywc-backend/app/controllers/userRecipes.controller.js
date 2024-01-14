@@ -166,4 +166,50 @@ exports.searchUserRecipesRegion= (req, res) => {
       });
     });
   };
+
+  //Find all users with recipes
+exports.findAllUsersRecipes = (req, res) => {
+  User.findAll ({
+    include: [ 
+      {
+        model: Recipe,
+        as: "recipe",
+      }],
+    })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+        err.message || "Some error occurred while retrieving the Users."
+      });
+    });
+  };
   
+   //Find all users with recipes by username
+exports.searchCreatorRecipes = (req, res) => {
+  const username = req.query.username;
+  var usernameCondition = username ? { username: { [Op.like]: `%${username}%` } } : null;
+  
+  User.findAll ({where: {
+    [Op.or]: [
+      usernameCondition
+    ]},
+    include: [ 
+      {
+        model: Recipe,
+        as: "recipe",
+      }],
+    })
+    .then(data => { 
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+        err.message || "Some error occurred while retrieving the Creators."
+      });
+    });
+  };
+
