@@ -96,14 +96,14 @@ return (
             usersRecipesName.map(usersRecipe => {
             return (
             <>
-              {usersRecipe.recipe.length > 6 && 
+              {usersRecipe.recipes.length > 6 && 
                 <Typography>
                   Scroll to see all recipes added by this contributor. 
                 </Typography>
               }
-              {usersRecipe.recipe &&
+              {usersRecipe.recipes &&
                 Array.from(
-                  usersRecipe.recipe.sort((a, b) => {
+                  usersRecipe.recipes.sort((a, b) => {
                     if (a.title.toLowerCase ()< b.title.toLowerCase()) {
                       return -1;
                     }
@@ -193,11 +193,11 @@ return (
                   <Typography variant="subtitle1"> 
                     Click on a title to see full recipe.
                   </Typography>
-                  {/* {usersRecipe.recipe.length > 4 && 
+                  {usersRecipe.recipes.length > 4 && 
                     <Typography>
                       Scroll to see all recipes for this contributor. 
                     </Typography>
-                  } */}
+                  }
                   <List
                     sx={{
                       width: '100%',
