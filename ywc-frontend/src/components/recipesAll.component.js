@@ -5,7 +5,7 @@ import { Autocomplete, Button, TextField, Pagination, Box, List, ListItem, ListI
 import usePagination from "../utils/pagination.util";
 import { useNavigate } from 'react-router-dom';
 
-const RecipesAll = ({clickRegion, clickCreator})=> {
+const RecipesAll = ({clickRegion, clickCreator, clickContributor})=> {
 
   //setup for data and search status
   const [recipes, setRecipes] = useState ([]);
@@ -155,6 +155,7 @@ const RecipesAll = ({clickRegion, clickCreator})=> {
           <Box m={2}>
             <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickRegion()}>filter by region</Button>
             <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickCreator()}>filter by creator</Button>
+            <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickContributor()}>filter by contributor</Button>
           </Box>
           <Pagination
             count={count}

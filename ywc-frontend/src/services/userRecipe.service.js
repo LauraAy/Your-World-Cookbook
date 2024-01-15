@@ -1,5 +1,14 @@
 import http from "../http-common";
 
+ //get all users with recipes
+ const getAllUsersRecipes = () => {
+  return http.get("/userRecipes");
+};
+
+//Get all users with recipes by username  
+const findByUsername = username => {
+  return http.get(`/userRecipes/search?username=${username}`);
+};
 //Get all recipes with userId
 const findUserRecipes = id => {
   return http.get(`/userRecipes/${id}`)
@@ -34,6 +43,8 @@ const findByCountry = (id, country) => {
 const findByRegionName = (id, regionName) => {
     return http.get(`/userRecipes/regionSearch/${id}?regionName=${regionName}`);
   };
+
+ 
   
 
 const RegionRecipeService = {
@@ -44,6 +55,8 @@ const RegionRecipeService = {
   findUserRecipeRegions,
   findByCountry,
   findByRegionName,
+  getAllUsersRecipes,
+  findByUsername
 };
 
 export default RegionRecipeService;
