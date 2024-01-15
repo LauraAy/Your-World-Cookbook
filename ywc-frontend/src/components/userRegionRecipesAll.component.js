@@ -59,6 +59,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
   const findByCountry = () => {
     const searchCountry = selectedRegion.country
     console.log(selectedRegion.country)
+    
     UserRecipeDataService.findByCountry(userId, searchCountry)
     .then (response => {
       setUserRecipesCountry(response.data);
@@ -115,14 +116,21 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
             return (
             <>
               <Typography variant="h4">Recipes from {selectedRegion.country}</Typography>
-              <Typography variant="subtitle1">
-                Click on a title to see full recipe.
-              </Typography>
-              {regionRecipe.recipe.length > 6 && 
-                <Typography>
-                  Scroll to see all recipes for this country. 
-                </Typography>
-              }
+              {regionRecipe.recipe.length  <= 0 && 
+                  <Typography variant="subtitle1">
+                    There are no recipes for this country yet.
+                  </Typography>
+                }
+                {regionRecipe.recipe.length > 0 && 
+                  <Typography variant="subtitle1">
+                    Click on a title to see full recipe.
+                  </Typography>
+                }
+                {regionRecipe.recipe.length > 6 && 
+                  <Typography>
+                    Scroll to see all recipes for this country. 
+                  </Typography>
+                }
               <List
                 sx={{
                   width: '100%',
@@ -185,6 +193,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
               userRecipesRegion.map(regionRecipe => {
               return (
               <>
+               
                 {regionRecipe.recipe.length > 6 && 
                   <Typography>
                     Scroll to see all recipes for this country. 
@@ -291,9 +300,16 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
                   return (
                   <>
                     <Typography variant="h5">{regionRecipe.country}</Typography>
-                    <Typography variant="subtitle1">
-                      Click on a title to see full recipe.
-                    </Typography>
+                    {regionRecipe.recipe.length  <= 0 && 
+                      <Typography variant="subtitle1">
+                        There are no recipes for this region yet.
+                      </Typography>
+                    }
+                    {regionRecipe.recipe.length > 0 && 
+                      <Typography variant="subtitle1">
+                        Click on a title to see full recipe.
+                      </Typography>
+                    }
                     {regionRecipe.recipe.length > 4 && 
                       <Typography>
                         Scroll to see all recipes for this country. 

@@ -111,9 +111,17 @@ const RegionRecipesAll = ({clickTitle, clickCreator})=> {
             <>
               <Box p="20px" pt="3" spacing={2}>
                 <Typography variant="h4">Recipes from {selectedRegion.country}</Typography>
-                <Typography variant="subtitle1">
-                  Click on a title to see full recipe.
-                </Typography>
+
+                {regionRecipe.recipe.length  <= 0 && 
+                  <Typography variant="subtitle1">
+                    There are no recipes for this region yet.
+                  </Typography>
+                }
+                {regionRecipe.recipe.length > 0 && 
+                  <Typography variant="subtitle1">
+                    Click on a title to see full recipe.
+                  </Typography>
+                }
                 {regionRecipe.recipe.length > 6 && 
                   <Typography>
                     Scroll to see all recipes for this country. 
@@ -174,9 +182,16 @@ const RegionRecipesAll = ({clickTitle, clickCreator})=> {
       <>
         <Box p="20px" pt="3" spacing={2}>
           <Typography variant="h4">Recipes from {currentRegionName}</Typography>
-          <Typography variant="subtitle1">
-            Click on a title to see full recipe.
-          </Typography>
+          {sortRegionRecipes.length  > 0 && 
+            <Typography variant="subtitle1">
+              Click on a title to see full recipe.
+            </Typography>
+          }
+          {sortRegionRecipes.length  <= 0 && 
+            <Typography variant="subtitle1">
+              There are no recipes for this Region yet.
+            </Typography>
+          }
           {sortRegionRecipes.length > 6 && 
             <Typography>
               Scroll to see all recipes for this region. 
@@ -306,9 +321,16 @@ const RegionRecipesAll = ({clickTitle, clickCreator})=> {
                   return (
                   <>
                     <Typography variant="h5">{regionRecipe.country}</Typography>
-                    <Typography variant="subtitle1">
-                      Click on a title to see full recipe.
-                    </Typography>
+                    {regionRecipe.recipe.length  <= 0 && 
+                       <Typography variant="subtitle1">
+                       There are no recipes for this region yet.
+                     </Typography>
+                    }
+                    {regionRecipe.recipe.length > 0 && 
+                       <Typography variant="subtitle1">
+                       Click on a title to see full recipe.
+                     </Typography>
+                    }
                     {regionRecipe.recipe.length > 4 && 
                       <Typography>
                         Scroll to see all recipes for this country. 
