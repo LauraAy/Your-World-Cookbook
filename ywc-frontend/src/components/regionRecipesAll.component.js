@@ -285,11 +285,8 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
           <Button 
               variant="contained" 
               onClick={findByCountry}
-              sx={{textTransform: 'none'}}
             >  
-              <Typography variant="h5" color="#ffffff">
-                Search
-              </Typography>
+              Search
             </Button>
           </Box>
         </Box>
@@ -315,11 +312,8 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
               <Button 
                 variant="contained" 
                 onClick={findByRegion}
-                sx={{textTransform: 'none'}}
-              >  
-                <Typography variant="h5" color="#ffffff">
-                  Search
-                </Typography>
+              >
+                Search
               </Button>
             </Box>
           </Box>

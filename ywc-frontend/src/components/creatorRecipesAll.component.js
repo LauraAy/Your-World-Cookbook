@@ -178,11 +178,8 @@ return (
             <Button 
               variant="contained" 
               onClick={findByCreatorName}
-              sx={{textTransform: 'none'}}
-            >  
-              <Typography variant="h5" color="#ffffff">
-                Search
-              </Typography>
+            > 
+              Search
             </Button>
           </Box>
         </Box>

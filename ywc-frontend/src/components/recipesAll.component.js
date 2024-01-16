@@ -158,11 +158,8 @@ const RecipesAll = ({clickRegion, clickCreator, clickContributor})=> {
             <Button 
               variant="contained" 
               onClick={findByTitle}
-              sx={{textTransform: 'none'}}
-            >  
-                <Typography variant="h5" color="#ffffff">
-                  Search
-                </Typography>
+            > 
+              Search
             </Button>
           </Box>
         </Box>
