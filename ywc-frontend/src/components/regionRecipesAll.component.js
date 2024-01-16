@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import RegionRecipeDataService from "../services/regionRecipe.service";
 import { Autocomplete, Box, Button, Divider,  List, ListItem, ListItemButton,  
-  ListItemText, Pagination, TextField, Typography, } from '@mui/material';
+  ListItemText, Menu, MenuItem, Pagination, TextField, Typography, } from '@mui/material';
 import usePagination from "../utils/pagination.util";
 import { useNavigate } from 'react-router-dom';
 
-const RegionRecipesAll = ({clickTitle, clickCreator})=> {
+const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
   
   //setup for data and search status
   const [regionRecipes, setRegionRecipes] = useState ([]);
@@ -89,6 +89,17 @@ const RegionRecipesAll = ({clickTitle, clickCreator})=> {
     
     navigate("/recipes/" + recipeId)
   };
+
+  //setup for dropdown
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  
 
   //reset to initial state
   const resetAll = () => {
@@ -271,7 +282,15 @@ const RegionRecipesAll = ({clickTitle, clickCreator})=> {
             renderInput={(params) => <TextField {...params} label="Search By Country" />}
           />
           <Box ml={2} mt={1}>
-            <Button variant="contained" onClick={findByCountry}>Search</Button>
+          <Button 
+              variant="contained" 
+              onClick={findByCountry}
+              sx={{textTransform: 'none'}}
+            >  
+              <Typography variant="h5" color="#ffffff">
+                Search
+              </Typography>
+            </Button>
           </Box>
         </Box>
         }           
@@ -293,20 +312,48 @@ const RegionRecipesAll = ({clickTitle, clickCreator})=> {
               renderInput={(params) => <TextField {...params} label="Search By RegionName" />}
             />
             <Box ml={2} mt={1}>
-              <Button variant="contained" onClick={findByRegion}>Search</Button>
+              <Button 
+                variant="contained" 
+                onClick={findByRegion}
+                sx={{textTransform: 'none'}}
+              >  
+                <Typography variant="h5" color="#ffffff">
+                  Search
+                </Typography>
+              </Button>
             </Box>
           </Box>
           <Box>
+            <Button
+              id="basic-button"
+              variant="contained"
+              sx={{mt:2, mb:4, ml:4, textTransform: 'none'}}
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClick}
+            >
+              <Typography variant="h5" color="#ffffff" gutterBottom>
+                Filter Recipes
+              </Typography>
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem onClick={() => clickTitle()}>filter by title</MenuItem>
+              <MenuItem onClick={() => clickCreator()}>filter by creator</MenuItem>
+              <MenuItem onClick={() => clickContributor()}>filter by contributor</MenuItem>
+            </Menu>
+              
             <Typography variant="h5" gutterBottom>
               Browse Recipes
             </Typography>
-            <Typography variant="subtitle1" gutterBottom>
-              Click to See Full Recipe
-            </Typography>
-            <Box m={2}>
-              <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickTitle()}>filter by title</Button>
-              <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickCreator()}>filter by creator</Button>
-            </Box>
             <Pagination
               count={count}
               size="large"

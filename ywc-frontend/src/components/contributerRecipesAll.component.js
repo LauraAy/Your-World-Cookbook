@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UsersRecipeDataService from "../services/userRecipe.service";
 import { Autocomplete, Box, Button, Divider,  List, ListItem, ListItemButton,  
-ListItemText, Pagination, TextField, Typography, } from '@mui/material';
+ListItemText, Menu, MenuItem, Pagination, TextField, Typography, } from '@mui/material';
 import usePagination from "../utils/pagination.util";
 import { useNavigate } from 'react-router-dom';
 
@@ -65,6 +65,16 @@ const ContributorRecipesAll = ({clickTitle, clickRegion, clickCreator})=> {
     
     navigate("/recipes/" + recipeId)
   };
+
+	//setup for dropdown
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const open = Boolean(anchorEl);
+	const handleClick = (event) => {
+		setAnchorEl(event.currentTarget);
+	};
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
 
   //reset to initial state
   const resetAll = () => {
@@ -164,18 +174,48 @@ return (
             renderInput={(params) => <TextField {...params} label="Search By Contributor Name" />}
           />
           <Box ml={2} mt={1}>
-            <Button variant="contained" onClick={findByUsername}>Search</Button>
+						<Button 
+              variant="contained" 
+              onClick={findByUsername}
+              sx={{textTransform: 'none'}}
+            >  
+              <Typography variant="h5" color="#ffffff">
+								Search
+							</Typography>
+						</Button>
           </Box>
         </Box>
         <Box>
+					<Button
+            id="basic-button"
+            variant="contained"
+            sx={{mt:2, mb:4, ml:4, textTransform: 'none'}}
+            aria-controls={open ? 'basic-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+          >
+            <Typography variant="h5" color="#ffffff" gutterBottom>
+              Filter Recipes
+            </Typography>
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={() => clickTitle()}>filter by title</MenuItem>
+            <MenuItem onClick={() => clickRegion()}>filter by region</MenuItem>
+            <MenuItem onClick={() => clickCreator()}>filter by creator</MenuItem>
+          </Menu>
+  
           <Typography variant="h5" gutterBottom>
             Browse Recipes
           </Typography>
-          <Box m={2}>
-            <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickTitle()}>filter by title</Button>
-            <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickRegion()}>filter by region</Button>
-						<Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickCreator()}>filter by creator</Button>
-          </Box>
           <Pagination
             count={count}
             size="large"
