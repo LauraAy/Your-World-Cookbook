@@ -42,7 +42,7 @@ const io = new Server(server , {
 // })
 
 var corsOptions = {
-  origin: "http://www.yourworldcookbook.com"
+  origin: "https://www.yourworldcookbook.com"
 };
 
 // var corsOptions = {
