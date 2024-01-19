@@ -5,7 +5,7 @@ const app = express();
 const path = require('path')
 const cors = require("cors");
 
-const server = http.createServer(app)
+const server = https.createServer(app)
 const io = new Server(server , {
   cors:{
     origin:"*"
