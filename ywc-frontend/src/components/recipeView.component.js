@@ -80,7 +80,7 @@ console.log(localStorage.getItem('ingredients'))
       {currentRecipe.recipeType && (
         <>
           <Typography variant="h5"sx={{ m: 1 }}>
-            RecipeType:
+            Recipe Type:
           </Typography>
           <Typography variant="body1"sx={{ m: 1 }}>
             {currentRecipe.recipeType} 

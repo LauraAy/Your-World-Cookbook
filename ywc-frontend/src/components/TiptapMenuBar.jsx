@@ -67,12 +67,12 @@ const MenuBar = ({ editor }) => {
         >
           <StrikethroughSOutlined />
         </button>
-        <button
+        {/* <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
           className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
         >
           <TitleOutlined />
-        </button>
+        </button> */}
       
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
