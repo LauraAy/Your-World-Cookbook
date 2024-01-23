@@ -136,7 +136,7 @@ console.log(localStorage.getItem('ingredients'))
       {currentRecipe.directions && (
         <>
           <Typography variant="h5"sx={{ m: 1 }}>
-            <strong>Directions: </strong>
+            Directions
           </Typography>
           <Typography variant="body1"sx={{ m: 1 }}>
             {parser(currentRecipe.directions)}
