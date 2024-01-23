@@ -50,7 +50,6 @@ const HomeComponent = () => {
       marginTop: '30px',
       marginLeft: '10px',
       marginRight: '10px',
-     
     },
     cardBG: {
       position: 'relative',
@@ -58,7 +57,6 @@ const HomeComponent = () => {
       marginTop: '30px',
       marginLeft: '10px',
       marginRight: '10px',
-      height: '100px',
       backgroundColor: '#1b5e20',
     },
     textCard: {
