@@ -59,6 +59,10 @@ const ContributorRecipesAll = ({clickTitle, clickRegion, clickCreator})=> {
     });
   };
 
+  let sortUsersRecipes = usersRecipesName.map(({ recipes }) => [].concat(recipes)).flat();
+
+  console.log (sortUsersRecipes)
+
   //List select function
   const handleListItemClick = (recipe) => {
     const recipeId = recipe.id
@@ -86,68 +90,76 @@ return (
   <>
     {searchActive ? (
     <>
-      <Box p="20px" pt="3" spacing={2}>
-        <Typography variant="h4">Recipes from {selectedUser.username}</Typography>
-        <Typography variant="subtitle1">
-          Click on a title to see full recipe.
-        </Typography>
-        <List
-          sx={{
-            width: '100%',
-            maxWidth: 480,
-            bgcolor: 'background.paper',
-            position: 'relative',
-            overflow: 'auto',
-            maxHeight: 500, 
-            '& ul': { padding: 0 }
-          }}
-        >
-          {usersRecipesName &&
-            usersRecipesName.map(usersRecipe => {
-            return (
-            <>
+      {usersRecipesName &&
+        usersRecipesName.map(usersRecipe => {
+          return (
+          <>
+            <Box p="20px" pt="3" spacing={2}>
+              <Typography variant="h4">Recipes from {selectedUser.username}</Typography>
+              {usersRecipe.recipes.length  <= 0 && 
+                <Typography variant="subtitle1">
+                    There are no recipes from this contributor yet.
+                </Typography>
+              }
+              {usersRecipe.recipes.length > 0 &&
+                <Typography variant="subtitle1">
+                  Click on a title to see full recipe.
+                </Typography>
+              }  
               {usersRecipe.recipes.length > 6 && 
                 <Typography>
                   Scroll to see all recipes added by this contributor. 
                 </Typography>
               }
-              {usersRecipe.recipes &&
-                Array.from(
-                  usersRecipe.recipes.sort((a, b) => {
-                    if (a.title.toLowerCase ()< b.title.toLowerCase()) {
-                      return -1;
-                    }
-                    if (a.title.toLowerCase() > b.title.toLowerCase()) {
-                      return 1;
-                    }
-                    return 0; 
-                  })
-                ).map((recipe, index) => (
-                <>
-                  <ListItemButton onClick={() => handleListItemClick(recipe)}>
-                    <ListItem key={recipe.id} >
-                      <ListItemText
-                        primary={recipe.title}
-                        secondary={recipe.description}
-                        secondaryTypographyProps={{ 
-                          style: {
+              <List
+                sx={{
+                  width: '100%',
+                  maxWidth: 480,
+                  bgcolor: 'background.paper',
+                  position: 'relative',
+                  overflow: 'auto',
+                  maxHeight: 500, 
+                  '& ul': { padding: 0 }
+                }}
+              >
+                {usersRecipe.recipes &&
+                  Array.from(
+                    usersRecipe.recipes.sort((a, b) => {
+                      if (a.title.toLowerCase ()< b.title.toLowerCase()) {
+                        return -1;
+                      }
+                      if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                        return 1;
+                      }
+                      return 0; 
+                    })
+                  ).map((recipe, index) => (
+                  <>
+                    <ListItemButton onClick={() => handleListItemClick(recipe)}>
+                      <ListItem key={recipe.id} >
+                        <ListItemText
+                          primary={recipe.title}
+                          secondary={recipe.description}
+                          secondaryTypographyProps={{ 
+                            style: {
                               whiteSpace: 'nowrap',
                               overflow: 'hidden',
                               textOverflow: 'ellipsis'
-                          }
-                        }}
-                      />
-                    </ListItem>
-                    <Divider />
-                  </ListItemButton>
-                </>
-                ))
-              } 
-            </>
-            )}
-          )}
-        </List>
-      </Box>
+                            }
+                          }}
+                        />
+                      </ListItem>
+                      <Divider />
+                    </ListItemButton>
+                  </>
+                  )
+                )} 
+              </List>
+            </Box>
+          </>
+          );
+        })}
+      
       <Box m={4}>
         <Button variant="outlined" onClick={resetAll}>Return to all recipes</Button>
       </Box>
@@ -227,11 +239,18 @@ return (
                 return (
                 <>
                   <Typography variant="h5">{usersRecipe.username}</Typography>
+                  {usersRecipe.recipes.length  <= 0 &&
+                    <Typography variant="subtitle1">
+                      There are no recipes from this contributor yet.
+                    </Typography>
+                  } 
+                  {usersRecipe.recipes.length  > 0 && 
                   <Typography variant="subtitle1"> 
                     Click on a title to see full recipe.
                   </Typography>
+                  }
                   {usersRecipe.recipes.length > 4 && 
-                    <Typography>
+                    <Typography variant="subtitle1">
                       Scroll to see all recipes for this contributor. 
                     </Typography>
                   }
@@ -292,6 +311,7 @@ return (
             <Box m={2}>
               <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickTitle()}>filter by title</Button>
               <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickRegion()}>filter by region</Button>
+              <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickCreator()}>filter by creator</Button>
             </Box>
           </Box>
         </Box>

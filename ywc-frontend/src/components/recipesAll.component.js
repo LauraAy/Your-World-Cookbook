@@ -239,6 +239,7 @@ const RecipesAll = ({clickRegion, clickCreator, clickContributor})=> {
           <Box m={2}>
             <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickRegion()}>filter by region</Button>
             <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickCreator()}>filter by creator</Button>
+            <Button sx={{my:2, ml:2}} variant="outlined" onClick={() => clickContributor()}>filter by contributor</Button>
           </Box>
         </Box>
       </Box>
