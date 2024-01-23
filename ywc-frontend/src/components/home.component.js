@@ -50,6 +50,16 @@ const HomeComponent = () => {
       marginTop: '30px',
       marginLeft: '10px',
       marginRight: '10px',
+     
+    },
+    cardBG: {
+      position: 'relative',
+      textAlign: 'center', 
+      marginTop: '30px',
+      marginLeft: '10px',
+      marginRight: '10px',
+      height: '100px',
+      backgroundColor: '#1b5e20',
     },
     textCard: {
       position: 'relative',
@@ -340,7 +350,7 @@ const HomeComponent = () => {
     </>
     ):(
     <>
-    <Card style={styles.card}>
+    <Card style={styles.cardBG}>
       <CardMedia image={japaneseTea} alt="A japanese tea set and asian style bowl with vegetables inside."style={styles.media2}/> 
       <Typography variant='h2' color='primary.main' style={styles.overlayLight} sx={{display: { xs: 'none', sm: 'none', md: 'flex' }}}>
         Welcome to Your World Cookbook
