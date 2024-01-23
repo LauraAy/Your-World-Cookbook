@@ -77,38 +77,73 @@ console.log(localStorage.getItem('ingredients'))
           />
       </Box>
 
-      <Typography variant="body1"sx={{ m: 1 }}>
-        {currentRecipe.recipeType && (
+      {currentRecipe.recipeType && (
         <>
-          <strong>RecipeType: </strong>
-          {currentRecipe.recipeType}
+          <Typography variant="h5"sx={{ m: 1 }}>
+            RecipeType:
+          </Typography>
+          <Typography variant="body1"sx={{ m: 1 }}>
+            {currentRecipe.recipeType} 
+          </Typography>
         </>
-        )}
-      </Typography>
-      <Typography variant="body1"sx={{ m: 1 }}>
-        {currentRecipe.servingSize && (
+      )}
+
+      {currentRecipe.servingSize && (
         <>
-          <strong>Serving Size: </strong>
-          {currentRecipe.servingSize}
+          <Typography variant="h5"sx={{ m: 1 }}>
+            Serving Size:
+          </Typography>
+          <Typography variant="body1"sx={{ m: 1 }}>
+            {currentRecipe.servingSize}
+          </Typography>
         </>
-        )}
-      </Typography>
-      <Typography variant="body1"sx={{ m: 1 }}>
-        {currentRecipe.ingredients && (
+      )}
+
+      {currentRecipe.prepTime && (
         <>
-          <strong>Ingredients: </strong>
-          {parser(currentRecipe.ingredients)}
+          <Typography variant="h5"sx={{ m: 1 }}>
+            Prep Time:
+          </Typography>
+          <Typography variant="body1"sx={{ m: 1 }}>
+            {currentRecipe.prepTime}
+          </Typography>
         </>
-        )}
-      </Typography>
-      <Typography variant="body1"sx={{ m: 1 }}>
-        {currentRecipe.directions && (
+      )}
+
+      {currentRecipe.cookTime && (
         <>
-          <strong>Directions: </strong>
-          {parser(currentRecipe.directions)}
+          <Typography variant="h5"sx={{ m: 1 }}>
+            Cook Time:
+          </Typography>
+          <Typography variant="body1"sx={{ m: 1 }}>
+            {currentRecipe.cookTime}
+          </Typography>
         </>
-        )}
-      </Typography>
+      )}
+        
+      {currentRecipe.ingredients && (
+        <>
+          <Typography variant="h5"sx={{ m: 1 }}>
+            Ingredients: 
+          </Typography>
+          <Typography variant="body1"sx={{ m: 1 }}>
+            {parser(currentRecipe.ingredients)}
+          </Typography>
+        </>
+      )}
+    
+    
+      {currentRecipe.directions && (
+        <>
+          <Typography variant="h5"sx={{ m: 1 }}>
+            <strong>Directions: </strong>
+          </Typography>
+          <Typography variant="body1"sx={{ m: 1 }}>
+            {parser(currentRecipe.directions)}
+          </Typography>
+        </>
+      )}
+    
       <Divider></Divider>
     </Box>
 

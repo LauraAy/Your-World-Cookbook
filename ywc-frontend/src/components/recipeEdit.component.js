@@ -36,6 +36,8 @@ const RecipeEdit = props => {
     description: "",
     recipeType: "",
     servingSize: null,
+    prepTime:"",
+    cookTime:"",
     ingredients: "",
     directions: "",
     source: "",
@@ -104,7 +106,7 @@ const RecipeEdit = props => {
   } = useForm({
     resolver: yupResolver(validationSchema),
     values: { title: currentRecipe.title, description: currentRecipe.description, recipeType: currentRecipe.recipeType, servingSize: currentRecipe.servingSize, 
-    source: currentRecipe.source },
+      prepTime: currentRecipe.prepTime, cookTime: currentRecipe.cookTime, source: currentRecipe.source },
   });
 
   //update recipe
@@ -114,6 +116,8 @@ const RecipeEdit = props => {
       description: formData.description,
       recipeType: formData.recipeType,
       servingSize: formData.servingSize,
+      prepTime: formData.prepTime,
+      cookTime: formData.cookTime,
       ingredients: ingredients,
       directions: directions,
       source: formData.source
@@ -159,166 +163,200 @@ const RecipeEdit = props => {
 
   return (
   <>
-        <Typography variant="h4" align="center" margin="dense">
-          Edit {currentRecipe.title}
+    <Box sx={{ mt:2}}>
+      <Typography variant="h4" align="center" margin="dense">
+        Edit {currentRecipe.title}
+      </Typography>
+    </Box>
+    <Box style={styles.borderBox}>
+      <FormControl fullWidth>
+        <TextField
+          sx={{ mt: 2, mb: 2 }}
+          id="title"
+          name="title"
+          label="Title"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          fullWidth
+          margin="dense"
+          multiline
+          rows={1}
+          {...register('title')}
+          error={errors.title ? true : false}
+        />
+        <Typography variant="inherit" color="textSecondary">
+          {errors.username?.message}
         </Typography>
-        <Box style={styles.borderBox}>
-          <FormControl fullWidth>
-            <TextField
-              sx={{ mt: 2, mb: 2 }}
-              id="title"
-              name="title"
-              label="Title"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              fullWidth
-              margin="dense"
-              multiline
-              rows={1}
-              {...register('title')}
-              error={errors.title ? true : false}
-            />
-            <Typography variant="inherit" color="textSecondary">
-              {errors.username?.message}
-            </Typography>
-            <TextField
-              sx={{ mt: 2, mb: 2 }}
-              id="description"
-              name="description"
-              label="Recipe Description"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              fullWidth
-              margin="dense"
-              multiline
-              rows={2}
-              {...register('description')}
-            />
-            <Autocomplete
-              value={currentRecipe.recipeType}
-              defaultValue=""
-              {...register('recipeType')}
-              onChange={(event, newValue) => {
-                if (typeof newValue === 'string') {
-                  const updatedValue = newValue.replace("Add ", "");
-                  setValue(updatedValue);
-                } else if (newValue && newValue.inputValue) {
-				        // Create a new value from the user input
-                  setValue(newValue.inputValue);
-                } else {
-                  setValue(newValue);
-                }
-              }}
-              filterOptions={(options, params) => {
-                const filtered = filter(options, params);
-                const { inputValue } = params;
-                // Suggest the creation of a new value
-                const isExisting = options.some((option) => inputValue === option);
-                if (inputValue !== "" && !isExisting) {
-                  filtered.push(`Add ${inputValue}`);
-                }
+        <TextField
+          sx={{ mt: 2, mb: 2 }}
+          id="description"
+          name="description"
+          label="Recipe Description"
+          InputLabelProps={{
+              shrink: true,
+            }}
+            fullWidth
+            margin="dense"
+            multiline
+            rows={2}
+            {...register('description')}
+          />
+          <Autocomplete
+            value={currentRecipe.recipeType}
+            defaultValue=""
+            {...register('recipeType')}
+            onChange={(event, newValue) => {
+              if (typeof newValue === 'string') {
+                const updatedValue = newValue.replace("Add ", "");
+                setValue(updatedValue);
+              } else if (newValue && newValue.inputValue) {
+				      // Create a new value from the user input
+                setValue(newValue.inputValue);
+              } else {
+                setValue(newValue);
+              }
+            }}
+            filterOptions={(options, params) => {
+            const filtered = filter(options, params);
+            const { inputValue } = params;
+            // Suggest the creation of a new value
+            const isExisting = options.some((option) => inputValue === option);
+            if (inputValue !== "" && !isExisting) {
+            filtered.push(`Add ${inputValue}`);
+            }
                 return filtered;
               }}
-              selectOnFocus
-              clearOnBlur
-              handleHomeEndKeys
-              id="recipeType"
-              options={typeOptions}
-              getOptionLabel= {(option) => {
-              // Value selected with enter, right from the input
-                if (typeof option === 'string') {
-                  const updatedOption = option.replace("Add ", "");
-                  return updatedOption;
-                }
-                // Add "xxx" option created dynamically
-                if (option.inputValue) {
-                  return option.inputValue;
-                }
-                // Regular option
-                return option.toString();
-              }}
-              renderOption={(props, option) => <li {...props}>{option}</li>}
-              freeSolo
-              fullWidth
-              renderInput={(option) => (
-                <TextField   
-                  {...option}
-                  label="RecipeType" 
-                  placeholder={currentRecipe.recipeType}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  {...register('recipeType')}
-                />
-              )}
-            />
-            
-            <TextField
-              sx={{ mt: 2, mb: 2 }}
-              id="servingSize"
-              type="{number}"
-              name="servingSize"
-              label="Serving Size"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              fullWidth
-              margin="dense"
-              {...register('servingSize')}
-              error={errors.servingSize ? true : false}
-            />
-            <Typography variant="inherit" color="textSecondary">
-              {errors.servingSize?.message}
-            </Typography>
-            <Box mb={2}>
-              <IngredientTipTap setIngredients={setIngredients}/>
-            </Box>
-            <Box mb={2}>
-              <DirectionsTipTap setDirections={setDirections}/>
-            </Box>
-            <TextField
-              sx={{ mt: 2, mb: 2 }}
-              id="source"
-              // defaultValue=""
-              name="source"
-              label="Recipe Source"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              fullWidth
-              margin="dense"
-              multiline
-              rows={1}
-              {...register('source')}
-            />
-          </FormControl>
-          <Box 
-            sx={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: 10 
+            selectOnFocus
+            clearOnBlur
+            handleHomeEndKeys
+            id="recipeType"
+            options={typeOptions}
+            getOptionLabel= {(option) => {
+            // Value selected with enter, right from the input
+              if (typeof option === 'string') {
+                const updatedOption = option.replace("Add ", "");
+                return updatedOption;
+              }
+              // Add "xxx" option created dynamically
+              if (option.inputValue) {
+                return option.inputValue;
+              }
+              // Regular option
+              return option.toString();
             }}
-          >
-            <Button
-              onClick={handleSubmit(updateRecipe)}
-              sx={{my: 2}}
-              variant="contained"
-            >
-              Update
-            </Button>  
-            <Button 
-              onClick={handleClickOpen}
-              sx={{my: 2, ml: 2}}
-              variant="contained"
-              color="error"
-            >
-              Delete
-            </Button>
-            <DeleteConfirmation openDialog={open} closeDialog={handleClose} confirmDialog={submitDelete} message={deleteMessage} text={deleteText}  />
-          </Box>   
-        </Box>
+            renderOption={(props, option) => <li {...props}>{option}</li>}
+            freeSolo
+            fullWidth
+            renderInput={(option) => (
+              <TextField   
+                {...option}
+                label="RecipeType" 
+                placeholder={currentRecipe.recipeType}
+                InputLabelProps={{
+                  shrink: true
+                }}
+                {...register('recipeType')}
+              />
+            )}
+          />
+            
+          <TextField
+            sx={{ mt: 2, mb: 2 }}
+            id="servingSize"
+            type="{number}"
+            name="servingSize"
+            label="Serving Size"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            fullWidth
+            margin="dense"
+            {...register('servingSize')}
+            error={errors.servingSize ? true : false}
+          />
+          <Typography variant="inherit" color="textSecondary">
+            {errors.servingSize?.message}
+          </Typography>
+          <TextField
+            sx={{ mt: 2, mb: 2 }}
+            id="prepTime"
+            // defaultValue=""
+            name="prepTime"
+            label="Prep Time"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            fullWidth
+            margin="dense"
+            multiline
+            rows={1}
+            {...register('prepTime')}
+          />
+          <TextField
+            sx={{ mt: 2, mb: 2 }}
+            id="cookTime"
+            // defaultValue=""
+            name="cookTime"
+            label="Cook Time"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            fullWidth
+            margin="dense"
+            multiline
+            rows={1}
+            {...register('cookTime')}
+          />
+          <Box mb={2}>
+            <Typography variant='body2'>Ingredients</Typography>
+            <IngredientTipTap setIngredients={setIngredients}/>
+          </Box>
+          <Box mb={2}>
+            <Typography variant='body2'>Directions</Typography>
+            <DirectionsTipTap setDirections={setDirections}/>
+          </Box>
+          <TextField
+            sx={{ mt: 2, mb: 2 }}
+            id="source"
+            // defaultValue=""
+            name="source"
+            label="Recipe Source"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            fullWidth
+            margin="dense"
+            multiline
+            rows={1}
+            {...register('source')}
+          />
+        </FormControl>
+        <Box 
+          sx={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: 10 
+          }}
+        >
+        <Button
+          onClick={handleSubmit(updateRecipe)}
+          sx={{my: 2}}
+          variant="contained"
+        >
+          Update
+        </Button>  
+        <Button 
+          onClick={handleClickOpen}
+          sx={{my: 2, ml: 2}}
+          variant="contained"
+          color="error"
+        >
+          Delete
+        </Button>
+        <DeleteConfirmation openDialog={open} closeDialog={handleClose} confirmDialog={submitDelete} message={deleteMessage} text={deleteText}  />
+      </Box>   
+    </Box>
   </>
   );
 };

@@ -184,7 +184,7 @@ const RegionViewComponent = params => {
         <Typography variant="subtitle1">
           Is this recipe from the place your family comes from? A place you love to visit or dream of traveling too?
           Add the countries and regions your recipe comes from to help track where your favorite foods originate. 
-       </Typography>
+        </Typography>
         <Button 
           onClick={goAddRegion}
           variant="contained"
