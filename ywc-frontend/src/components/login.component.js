@@ -61,6 +61,7 @@ const LoginComponent = () => {
 
           setLoading(false);
           setMessage(resMessage);
+          console.log(message)
         }
       );
   };
@@ -108,9 +109,9 @@ const LoginComponent = () => {
               {...register('password')}
                 error={errors.password ? true : false}
             />
-            <Typography variant="inherit" color="textSecondary">
+            {/* <Typography variant="inherit" color="textSecondary">
               {errors.password?.message}
-            </Typography>
+            </Typography> */}
           </FormControl>
           <Box mt={3}>
           <Button
@@ -120,6 +121,15 @@ const LoginComponent = () => {
           >
             Sign In
           </Button>
+          {message && 
+          <Box mt={2} sx={{ border: 2, borderColor: 'red'}}>
+            <Typography>
+              Error! {message} 
+              <br></br>
+              Please try again or  <a href="/register">create a new account.</a>
+            </Typography>
+          </Box>
+          }
         </Box>
         </Box>
     </>
