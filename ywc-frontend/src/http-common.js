@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "https://www.yourworldcookbook.com/api/",
+    baseURL: "https://yourworldcookbook.com/api/",
     headers: {
         "Content-type": "application/json"
     }
