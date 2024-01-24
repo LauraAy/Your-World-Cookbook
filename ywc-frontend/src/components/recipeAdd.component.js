@@ -345,9 +345,6 @@ const newRecipe = () => {
             margin="dense"
             {...register('source')}
           />
-          <Button onClick= {handleSubmit(onSubmit)}>
-            submit
-          </Button>
           <Box mt={3}>
             <Button
               variant="contained"
