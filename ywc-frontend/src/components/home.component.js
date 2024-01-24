@@ -182,10 +182,10 @@ const HomeComponent = () => {
     <Card style={styles.topCard}>
       <CardMedia image={cuttingBoard} alt="A cutting board with veggies and other food prep."style={styles.media}/> 
       <Typography variant='h3' color='primary.main' style={styles.overlay} sx={{ display: { xs: 'none', sm: 'none', md: 'flex' }}}>
-        Welcome to Your World CookBook {currentUser.username}
+        Welcome to Your World Cookbook {currentUser.username}
       </Typography>
       <Typography variant='h4' color='primary.main' style={styles.overlay} sx={{display: { xs: 'none', sm: 'flex', md: 'none'}}}>
-        Welcome to Your World CookBook {currentUser.username}
+        Welcome to Your World Cookbook {currentUser.username}
       </Typography>
       <Typography variant='h5' color='primary.main' style={styles.overlay} sx={{display: { xs: 'flex', sm: 'none' }}}>
         Welcome {currentUser.username}
