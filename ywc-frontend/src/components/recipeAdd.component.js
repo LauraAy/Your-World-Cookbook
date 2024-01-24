@@ -163,11 +163,11 @@ const newRecipe = () => {
   }
 
   const addCreator = () => {
-    navigate("/regions/add/" + recipe.id)
+    navigate("/creators/add/" + recipe.id)
   }
 
   const addPairing = () => {
-    navigate("/regions/add/" + recipe.id)
+    navigate("/pairings/add/" + recipe.id)
   }
   
   return (
