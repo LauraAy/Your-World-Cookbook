@@ -79,9 +79,9 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
     });
   };
 
-  let sortRegionRecipes = regionRecipesRegion.map(({ recipe }) => [].concat(recipe)).flat();
+  let sortRegionRecipesRegion = regionRecipesRegion.map(({ recipe }) => [].concat(recipe)).flat();
 
-  console.log (sortRegionRecipes)
+  console.log (sortRegionRecipesRegion)
 
   //List select function
   const handleListItemClick = (recipe) => {
@@ -193,17 +193,17 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
       <>
         <Box p="20px" pt="3" spacing={2}>
           <Typography variant="h4">Recipes from {currentRegionName}</Typography>
-          {sortRegionRecipes.length  > 0 && 
+          {sortRegionRecipesRegion.length  > 0 && 
             <Typography variant="subtitle1">
               Click on a title to see full recipe.
             </Typography>
           }
-          {sortRegionRecipes.length  <= 0 && 
+          {sortRegionRecipesRegion.length  <= 0 && 
             <Typography variant="subtitle1">
               There are no recipes for this Region yet.
             </Typography>
           }
-          {sortRegionRecipes.length > 6 && 
+          {sortRegionRecipesRegion.length > 6 && 
             <Typography>
               Scroll to see all recipes for this region. 
             </Typography>
@@ -219,9 +219,9 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
               '& ul': { padding: 0 }
             }}
           >
-            {sortRegionRecipes &&
+            {sortRegionRecipesRegion &&
               Array.from(
-                sortRegionRecipes.sort((a, b) => {
+                sortRegionRecipesRegion.sort((a, b) => {
                   if (a.title.toLowerCase ()< b.title.toLowerCase()) {
                     return -1;
                   }

@@ -43,6 +43,26 @@ exports.findRegionRecipes = (req, res) => {
     });
   };
 
+  //Find regions with recipes where number of recipes are greater than 0
+  exports.findRegionRecipes = (req, res) => {
+    Region.findAll ({
+      include: [ 
+        {
+          model: Recipe,
+          as: "recipe",
+        }],
+      })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+          err.message || "Some error occurred while retrieving the Regions."
+        });
+      });
+    };
+
 
 //Find all regions with recipes by country or regionName
 exports.searchRegionRecipes = (req, res) => {
