@@ -20,6 +20,7 @@ exports.create = (req, res) => {
     servingSize: req.body.servingSize,
     ingredients: req.body.ingredients,
     directions: req.body.directions,
+    source: req.body.source,
     published: req.body.published ? req.body.published : false,
     userId: req.body.userId
   };
