@@ -207,11 +207,14 @@ const CreatorAddComponent = () => {
   //Reset form for new creator
   const newCreator = () => {
     setCreator(initialCreatorState);
-    setCurrentCreator(initialCreatorState)
+    setCurrentCreator(initialCreatorState);
     setCreateNew(false);
     setSelected(false);
     setAdded(false);
     setSubmitted(false);
+    window.location.reload(false);
+    console.log(currentCreator)
+    console.log(creator)
   };
   
   //navigate to recipe page
