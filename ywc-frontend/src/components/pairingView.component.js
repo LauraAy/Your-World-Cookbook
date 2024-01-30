@@ -180,86 +180,115 @@ const PairingViewComponent = params => {
           <Box mx={4} mb={4}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={8}>
-                <Typography variant="body1"sx={{ m: 1 }}>
-                  {pairing.description && (
+                {pairing.description && (
                   <>
-                    <strong>Description: </strong>
-                    {pairing.description}
+                    <Typography variant="h5"sx={{ m: 1, color: "pairing.main"}}>
+                      Description
+                    </Typography>
+                    <Typography variant="body1"sx={{ m: 1 }}>
+                      {pairing.description}
+                    </Typography>
                   </>
-                  )}
-                </Typography>
-                <Typography variant="body1"sx={{ m: 1 }}>
-                  {pairing.drinks && (
+                )}
+                {pairing.drinks && (
                   <>
-                    <strong>Drinks: </strong>
-                    {pairing.drinks}
+                    <Typography variant="h5"sx={{ m: 1, color: "pairing.main"}}>
+                      Drinks:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {pairing.drinks}
+                    </Typography>
                   </>
-                  )}
-                </Typography>
-                <Typography variant="body1"sx={{ m: 1 }}>
-                  {pairing.shows && (
+                )}
+                {pairing.shows && (
                   <>
-                    <strong>Shows: </strong>
-                    {pairing.shows}
+                    <Typography variant="h5"sx={{ m: 1, color: "pairing.main"}}>
+                      Shows:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {pairing.shows}
+                    </Typography>
                   </>
-                  )}
-                </Typography>
-                <Typography variant="body1"sx={{ m: 1 }}>
-                  {pairing.books && (
+                )}
+                {pairing.books && (
                   <>
-                    <strong>Books: </strong>
-                    {pairing.books}
+                    <Typography variant="h5"sx={{ m: 1, color: "pairing.main"}}>
+                      Books:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {pairing.books}
+                    </Typography>
                   </>
-                  )}
-                </Typography>
-                <Typography variant="body1"sx={{ m: 1 }}>
-                  {pairing.music && (
+                )}
+               
+                {pairing.music && (
                   <>
-                    <strong>Music: </strong>
-                    {pairing.music}
+                    <Typography variant="h5"sx={{ m: 1, color: "pairing.main"}}>
+                      Music:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {pairing.music}
+                    </Typography>
                   </>
-                  )}
-                </Typography>
-                <Typography variant="body1"sx={{ m: 1 }}>
-                  {pairing.decor && (
+                )}
+                {pairing.decor && (
                   <>
-                    <strong>Crafts and decor: </strong>
-                    {pairing.decor}
+                    <Typography variant="h5"sx={{ m: 1, color: "pairing.main"}}>
+                      Crafts and decor:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {pairing.decor}
+                    </Typography>
                   </>
-                  )}
-                </Typography>
-                <Typography variant="body1"sx={{ m: 1 }}>
-                  {pairing.recipeOne && (
+                )}
+                {pairing.more && (
                   <>
-                    <strong>Related Recipe 1: </strong>
-                    &nbsp;
-                    {recipeOne.title}
+                    <Typography variant="h5"sx={{ m: 1, color: "pairing.main"}}>
+                      More:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {pairing.more}
+                    </Typography>
+                  </>
+                )}
+                {pairing.recipeOne && (
+                  <>
+                    <Typography variant="h5" sx={{ m: 1, color: "pairing.main"}}>
+                      Related Recipe 1:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {recipeOne.title}
+                    </Typography>
                     <Button
                       onClick={recipeOneNav}
                     >
                       View Recipe
                     </Button>
                   </>
-                  )}
-                </Typography>
-                <Typography variant="body1"sx={{ m: 1 }}>
-                  {pairing.recipeTwo && (
+                )}
+                {pairing.recipeTwo && (
                   <>
-                    <strong>Related Recipe 2: </strong>
-                    {recipeTwo.title}
+                    <Typography variant="h5" sx={{ m: 1, color: "pairing.main"}}>
+                      Related Recipe 2:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {recipeTwo.title}
+                    </Typography>
                     <Button
                       onClick={recipeTwoNav}
                     >
                       View Recipe
                     </Button>
                   </>
-                  )}
-                </Typography>
-                <Typography variant="body1"sx={{ m: 1 }}>
-                  {pairing.recipeThree && (
+                )}
+                {pairing.recipeThree && (
                   <>
-                    <strong>Related Recipe 3: </strong>
-                    {recipeThree.title}
+                    <Typography variant="h5" sx={{ m: 1, color: "pairing.main"}}>
+                      Related Recipe 3:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {recipeThree.title}
+                    </Typography>
                     <Button
                       onClick={recipeThreeNav}
                     >
@@ -267,7 +296,6 @@ const PairingViewComponent = params => {
                     </Button>
                   </>
                   )}
-                </Typography>
                 <Tooltip title="Edit this pairing.">
                   <Button
                     onClick={editPairing}

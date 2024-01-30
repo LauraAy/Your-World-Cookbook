@@ -61,7 +61,8 @@ import Test from "./components/test.js"
         color: grey[900]
       },
       body1: {
-        fontSize: "1.1rem",
+        fontFamily: "Georgia, Times, Times New Roman, serif",
+        fontSize: "1.2rem",
         lineHeight: "1.5"
       }, 
     },
