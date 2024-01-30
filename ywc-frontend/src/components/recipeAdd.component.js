@@ -337,7 +337,7 @@ const newRecipe = () => {
           <TextField
             sx={{ mb: 2 }}
             id="source"
-            defaultValue=""
+            // defaultValue=""
             name="source"
             label="Recipe Source"
             placeholder="Recipe Source"
