@@ -220,6 +220,16 @@ const PairingViewComponent = params => {
                     </Typography>
                   </>
                 )}
+                {pairing.games && (
+                  <>
+                    <Typography variant="h5"sx={{ m: 1, color: "pairing.main"}}>
+                      Games:
+                    </Typography>
+                    <Typography variant="body1" sx={{ m: 1 }}>
+                      {pairing.games}
+                    </Typography>
+                  </>
+                )}
                
                 {pairing.music && (
                   <>
