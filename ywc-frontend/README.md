@@ -1,4 +1,4 @@
-This is the front end React CRUD Application for the Custom Cookbook project by Laura Aydelotte. 
+This is the front end React CRUD Application for the Your World Cookbook project by Laura Aydelotte. 
 
 # Getting Started with Create React App
 
