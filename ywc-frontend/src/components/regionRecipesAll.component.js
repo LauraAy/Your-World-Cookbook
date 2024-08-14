@@ -13,9 +13,10 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
   const [regionRecipesRegion, setRegionRecipesRegion] = useState([]);
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState("")
-  const [searchActive, setSearchActive] = useState(false);
+  const [regionSearch, setRegionSearch] = useState(false);
 	const [countrySearch, setCountrySearch] = useState(false)
 	const [currentRegionName, setCurrentRegionName] = useState("")
+  const [justRegionRecipes, setJustRegionRecipes] = useState([])
 
   const navigate = useNavigate()
 
@@ -23,12 +24,26 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
     useEffect(() => {
     retrieveRegionRecipes();
   }, []);
+ 
 
   const retrieveRegionRecipes = () => {
     RegionRecipeDataService.getAllRegionRecipes()
     .then(response => {
       setRegionRecipes(response.data);
       console.log(response.data);
+      
+      const justRecipes = [];
+
+      let region = response.data
+      for (let i = 0; i < region.length; i++) {
+      
+        if (region[i].recipe.length > 0) {
+          justRecipes.push(region[i])
+        }
+      }
+      
+      setJustRegionRecipes(justRecipes)
+      console.log(justRegionRecipes)
     })
     .catch(e => {
       console.log(e);
@@ -38,8 +53,8 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
   //pagination functions for regionRecipes
   let [page, setPage] = useState(1);
   const PER_PAGE = 5;
-  const count = Math.ceil(regionRecipes.length / PER_PAGE);
-  const _DATA = usePagination(regionRecipes, PER_PAGE);
+  const count = Math.ceil (justRegionRecipes.length / PER_PAGE);
+  const _DATA = usePagination(justRegionRecipes, PER_PAGE);
 
   const handleChange = (e, p) => {
     setPage(p);
@@ -54,7 +69,7 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
     RegionRecipeDataService.findByCountry(searchCountry)
     .then (response => {
       setRegionRecipesCountry(response.data);
-      setSearchActive(true)
+      setRegionSearch(true)
       setCountrySearch(true)
       setCurrentRecipe(null)
       console.log(response.data);
@@ -70,7 +85,7 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
     RegionRecipeDataService.findByRegionName(searchRegionName)
     .then (response => {
       setRegionRecipesRegion(response.data);
-      setSearchActive(true)
+      setRegionSearch(true)
       setCurrentRecipe(null)
       console.log(response.data)
     })
@@ -104,15 +119,16 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
   //reset to initial state
   const resetAll = () => {
     retrieveRegionRecipes()
-    setSearchActive(false)
+    setRegionSearch(false)
     if ( countrySearch === true ) {
       setCountrySearch(false)
     }
   }
 
   return (
+  //country search active 
   <>
-    {searchActive ? (
+    {regionSearch ? (
     <>
       {countrySearch ? (
       <>
@@ -181,6 +197,7 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
                   )}
                 </List>
               </Box>
+              {/* } */}
             </>
             );
           })}
@@ -190,7 +207,8 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
         </Box>
       </>
       ):(
-      <>
+      //Region Search Active
+        <>
         <Box p="20px" pt="3" spacing={2}>
           <Typography variant="h4">Recipes from {currentRegionName}</Typography>
           {sortRegionRecipesRegion.length  > 0 && 
@@ -260,6 +278,7 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
       )}
     </>
     ):(
+    //Neither Search Active
     <>
       <Box p="20px" pt="3" spacing={2}>
         <Typography variant="h4" gutterBottom>
@@ -356,17 +375,23 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
               shape="rounded"
               onChange={handleChange}
             />
+
             <Box p="10" pt="3" spacing={2}>
               {_DATA &&
                 _DATA.currentData().map(regionRecipe => {
                   return (
                   <>
+                    {regionRecipe.recipe &&
+                  
                     <Typography variant="h5">{regionRecipe.country}</Typography>
-                    {regionRecipe.recipe.length  <= 0 && 
-                       <Typography variant="subtitle1">
-                       There are no recipes for this region yet.
-                     </Typography>
                     }
+                    
+                    {/* {regionRecipe.recipe.length  <= 0 && 
+                        <Typography variant="subtitle1">
+                       There are no recipes for this region yet.
+                     </Typography> 
+                    }
+                   */}
                     {regionRecipe.recipe.length > 0 && 
                        <Typography variant="subtitle1">
                        Click on a title to see full recipe.
