@@ -56,18 +56,6 @@ const MapComponent = () => {
     
     return ( 
     <>
-    {/* <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-  <Marker position={[51.505, -0.09]}>
-    <Popup>
-      A pretty CSS3 popup. <br /> Easily customizable.
-    </Popup>
-  </Marker>
-</MapContainer>
-         */}
         // Make sure you set the height and width of the map container otherwise the map won't show
         <MapContainer center={[51.505, -0.09]} zoom={2} ref={mapRef} style={{height: "80vh", width: "100vw"}}>
         <TileLayer
@@ -81,6 +69,7 @@ const MapComponent = () => {
                 justRegionRecipes.map(regionRecipe => {
                     return (
                         <Marker position={[regionRecipe.lat, regionRecipe.lng]}>
+                            <Popup>
                             {regionRecipe.recipe && 
                                 Array.from(
                                     regionRecipe.recipe.sort((a, b) => {
@@ -93,9 +82,10 @@ const MapComponent = () => {
                                             return 0; 
                                     })
                                 ).map((recipe, index) => (  
-                                    <Popup>{recipe.title}</Popup>
+                                 <p>{recipe.title}</p> 
                                 ))
                             }
+                            </Popup>
                         </Marker>
                       
                     )
