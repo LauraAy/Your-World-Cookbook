@@ -15,7 +15,9 @@ const MapComponent = () => {
 
     let DefaultIcon = L.icon({
         iconUrl: icon,
-        shadowUrl: iconShadow
+        shadowUrl: iconShadow,
+        iconSize: [25,41], 
+        iconAnchor: [12,41]
     });
     
     L.Marker.prototype.options.icon = DefaultIcon;
@@ -67,22 +69,37 @@ const MapComponent = () => {
 </MapContainer>
          */}
         // Make sure you set the height and width of the map container otherwise the map won't show
-        <MapContainer center={[51.505, -0.09]} zoom={13} ref={mapRef} style={{height: "100vh", width: "100vw"}}>
+        <MapContainer center={[51.505, -0.09]} zoom={2} ref={mapRef} style={{height: "80vh", width: "100vw"}}>
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
           {/* Additional map layers or components can be added here */}
             
-                        <Marker position={[51.5, -0.09]}>
-                            <Popup>Hello world</Popup>
-                        </Marker>
-            {/* {justRegionRecipes &&
+                       
+            {justRegionRecipes &&
                 justRegionRecipes.map(regionRecipe => {
                     return (
+                        <Marker position={[regionRecipe.lat, regionRecipe.lng]}>
+                            {regionRecipe.recipe && 
+                                Array.from(
+                                    regionRecipe.recipe.sort((a, b) => {
+                                        if (a.title.toLowerCase ()< b.title.toLowerCase()) {
+                                            return -1;
+                                        }
+                                        if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                                            return 1;
+                                        }
+                                            return 0; 
+                                    })
+                                ).map((recipe, index) => (  
+                                    <Popup>{recipe.title}</Popup>
+                                ))
+                            }
+                        </Marker>
                       
                     )
-                })} */}
+                })}
         </MapContainer>
     </>
     );
