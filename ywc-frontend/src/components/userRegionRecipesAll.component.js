@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import UserRecipeDataService from "../services/userRecipe.service";
+import RegionRecipeDataService from "../services/regionRecipe.service";
 import { Link } from "react-router-dom";
 import { Autocomplete, Box, Button, Divider,  List, ListItem, ListItemButton,  
   ListItemText, Menu, MenuItem, Pagination, TextField, Typography, } from '@mui/material';
@@ -12,13 +13,15 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
   const [userRegionRecipes, setUserRegionRecipes] = useState ([]);
   const [userRecipesCountry, setUserRecipesCountry] = useState([]);
   const [userRecipesRegion, setUserRecipesRegion] = useState([]);
+  const [regionRecipes, setRegionRecipes] = useState([])
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [selectedRegion, setSelectedRegion] = useState("")
   const [regionSearch, setRegionSearch] = useState(false);
 	const [countrySearch, setCountrySearch] = useState(false)
 	const [currentRegionName, setCurrentRegionName] = useState("")
-  const [justRegionRecipes, setJustRegionRecipes] = useState([])
+ 
+
 
   const currentUser = AuthService.getCurrentUser();
   const userId = currentUser.id
@@ -27,6 +30,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
 
   useEffect(() => {
     retrieveUserRegionRecipes(userId);
+    retrieveRegionRecipes()
   }, []);
 
   const retrieveUserRegionRecipes = (id) => {
@@ -34,6 +38,18 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
     .then(response => {
       setUserRegionRecipes(response.data);
       console.log(response.data);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  };
+
+  const retrieveRegionRecipes = () => {
+    RegionRecipeDataService.getAllRegionRecipes()
+    .then(response => {
+      setRegionRecipes(response.data);
+      console.log(response.data);
+      
     })
     .catch(e => {
       console.log(e);
@@ -256,7 +272,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
           <Autocomplete
             disablePortal
             id="combo-box-demo"
-            options = {userRegionRecipes.map((regionRecipe) => regionRecipe)}
+            options = {regionRecipes.map((regionRecipe) => regionRecipe)}
             getOptionLabel={(regionRecipe) => regionRecipe.country }
             onChange={(event, value) => setSelectedRegion(value)}
             sx={{ width: 300 }}
@@ -276,7 +292,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options = {Array.from(new Set(userRegionRecipes.map((regionRecipe) => regionRecipe.regionName)))
+              options = {Array.from(new Set(regionRecipes.map((regionRecipe) => regionRecipe.regionName)))
                 .map((regionName) => regionName)}
               getOptionLabel={(regionName) => regionName }
               onChange={(event, value) => setCurrentRegionName(value)}
