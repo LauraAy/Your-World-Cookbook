@@ -15,9 +15,10 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [selectedRegion, setSelectedRegion] = useState("")
-  const [searchActive, setSearchActive] = useState(false);
+  const [regionSearch, setRegionSearch] = useState(false);
 	const [countrySearch, setCountrySearch] = useState(false)
 	const [currentRegionName, setCurrentRegionName] = useState("")
+  const [justRegionRecipes, setJustRegionRecipes] = useState([])
 
   const currentUser = AuthService.getCurrentUser();
   const userId = currentUser.id
@@ -39,10 +40,6 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
     });
   };
 
-  // const setActiveRecipe = (recipe, index) => {
-  //   setCurrentRecipe(recipe);
-  //   setCurrentIndex(index);
-  // };
 
   //pagination functions for regionRecipes
   let [page, setPage] = useState(1);
@@ -63,7 +60,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
     UserRecipeDataService.findByCountry(userId, searchCountry)
     .then (response => {
       setUserRecipesCountry(response.data);
-      setSearchActive(true)
+      setRegionSearch(true)
       setCountrySearch(true)
       setCurrentRecipe(null)
       console.log(response.data);
@@ -79,7 +76,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
     UserRecipeDataService.findByRegionName(userId, searchRegionName)
     .then (response => {
       setUserRecipesRegion(response.data);
-      setSearchActive(true)
+      setRegionSearch(true)
       setCurrentRecipe(null)
       console.log(response.data);
     })
@@ -108,15 +105,16 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
   //reset to initial state
   const resetAll = () => {
     retrieveUserRegionRecipes(userId)
-    setSearchActive(false)
+    setRegionSearch(false)
     if ( countrySearch === true ) {
       setCountrySearch(false)
     }
   }
 
   return (
+    //country search active
     <>
-    {searchActive ? (
+    {regionSearch ? (
     <>
       {countrySearch ? (
       <>
@@ -182,6 +180,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
         </Box>
       </>
       ):(
+      //region search active
       <>
         <Box p="20px" pt="3" spacing={2}>
           <Typography variant="h4">Recipes from {currentRegionName}</Typography>
@@ -242,6 +241,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
       )}
     </>
     ):(
+    //neither search active
     <>
       <Box p="20px" pt="3" spacing={2}>
         <Typography variant="h4" gutterBottom>
