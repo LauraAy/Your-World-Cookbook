@@ -28,6 +28,7 @@ import CreatorEdit from "./pages/creatorEdit.page.js";
 import PairingAdd from "./pages/pairingAdd.page.js";
 import PairingEdit from "./pages/pairingEdit.page.js"
 import ScrollToTop from "./components/scrollToTop.component";
+import Map from "./components/map.component";
 
 
 import Test from "./components/test.js"
@@ -130,6 +131,7 @@ const App = () => {
 
         <Route path="/test" element={<Test/>} />
         <Route path ="/test/:id" element={<Test/>} />
+        <Route path= "/map" element = {<Map/>} />
         
       </Routes>
     </div>

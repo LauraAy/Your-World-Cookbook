@@ -4,3 +4,5 @@
      url("./fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype");
     font-weight: medium;
    }
+
+   #map { height: 500px; }
