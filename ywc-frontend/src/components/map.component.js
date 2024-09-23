@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import '../map.css'
+import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import RegionRecipeDataService from "../services/regionRecipe.service";
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-
-
 
 
 const MapComponent = () => {
@@ -56,15 +56,13 @@ const MapComponent = () => {
     
     return ( 
     <>
-        // Make sure you set the height and width of the map container otherwise the map won't show
         <MapContainer center={[51.505, -0.09]} zoom={2} ref={mapRef} style={{height: "80vh", width: "100vw"}}>
         <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            
+            url="https://api.maptiler.com/maps/basic-v2/{z}/{x}/{y}.png?key=e58f4mdkjIaV7bqc6mPg"
         />
           {/* Additional map layers or components can be added here */}
             
-                       
             {justRegionRecipes &&
                 justRegionRecipes.map(regionRecipe => {
                     return (
