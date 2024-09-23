@@ -8,9 +8,19 @@ import "leaflet/dist/leaflet.css";
 import RegionRecipeDataService from "../services/regionRecipe.service";
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import { Autocomplete, Button, TextField, Pagination, Box, List, ListItem, ListItemButton,
+    ListItemText, Menu, MenuItem, Typography, Divider } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { spacing } from '@mui/system';
+
+
+
 
 
 const MapComponent = () => {
+    const navigate = useNavigate()
+
+
     const mapRef = useRef(null);
 
     let DefaultIcon = L.icon({
@@ -54,6 +64,13 @@ const MapComponent = () => {
         });
     };
     
+      //List select function
+  const handleItemClick = (recipe) => {
+    const recipeId = recipe.id
+    
+    navigate("/recipes/" + recipeId)
+  };
+
     return ( 
     <>
         <MapContainer center={[51.505, -0.09]} zoom={2} ref={mapRef} style={{height: "80vh", width: "100vw"}}>
@@ -80,7 +97,12 @@ const MapComponent = () => {
                                             return 0; 
                                     })
                                 ).map((recipe, index) => (  
-                                 <p>{recipe.title}</p> 
+                               
+                                   <Button sx={{ maxHeight: '40px' }} variant="text" onClick={() => handleItemClick(recipe)}>
+                                        <p>{recipe.title}</p> 
+                                    </Button>
+                
+                        
                                 ))
                             }
                             </Popup>
