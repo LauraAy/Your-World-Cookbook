@@ -3,7 +3,7 @@ import {Box, Button, Card, CardMedia, Divider, Grid, Typography} from '@mui/mate
 import {DoubleArrow} from '@mui/icons-material';
 import AuthService from "../services/auth.service";
 import cuttingBoard from "../images/cuttingBoard.png";
-import japaneseTea from "../images/japaneseTea2.png"
+import japaneseTea from "../images/japaneseTea.jpg"
 import globe from "../images/globe.png"
 import creator from "../images/creator.png"
 import pairing from "../images/pairing.png"
