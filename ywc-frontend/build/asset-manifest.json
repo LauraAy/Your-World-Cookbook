@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.463c8bde.css",
-    "main.js": "/static/js/main.9ef124ba.js",
+    "main.js": "/static/js/main.408e5442.js",
     "static/js/787.e1abec35.chunk.js": "/static/js/787.e1abec35.chunk.js",
     "static/media/cuttingBoard.jpg": "/static/media/cuttingBoard.ea928fca7f1d6da4505a.jpg",
     "static/media/japaneseTea.jpg": "/static/media/japaneseTea.2eacf1af58bc12cb4084.jpg",
@@ -19,11 +19,11 @@
     "static/media/montserrat-vietnamese-wght-normal.woff2": "/static/media/montserrat-vietnamese-wght-normal.07ecd2bf394620316a60.woff2",
     "index.html": "/index.html",
     "main.463c8bde.css.map": "/static/css/main.463c8bde.css.map",
-    "main.9ef124ba.js.map": "/static/js/main.9ef124ba.js.map",
+    "main.408e5442.js.map": "/static/js/main.408e5442.js.map",
     "787.e1abec35.chunk.js.map": "/static/js/787.e1abec35.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.463c8bde.css",
-    "static/js/main.9ef124ba.js"
+    "static/js/main.408e5442.js"
   ]
 }
