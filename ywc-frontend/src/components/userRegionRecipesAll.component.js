@@ -375,7 +375,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
                     >
                       {regionRecipe.recipe &&
                         regionRecipe.recipe.map((recipe, index) => (    
-                          <ListItemButton onClick={() => handleListItemClick(regionRecipe)}>
+                          <ListItemButton onClick={() => handleListItemClick(recipe)}>
                             <ListItem key={regionRecipe.id} >
                               <ListItemText
                                 primary={recipe.title}

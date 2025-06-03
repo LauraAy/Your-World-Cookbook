@@ -234,7 +234,7 @@ return (
                   >
                       {creatorRecipe.recipe &&
                       creatorRecipe.recipe.map((recipe, index) => (    
-                        <ListItemButton onClick={() => handleListItemClick(creatorRecipe)}>
+                        <ListItemButton onClick={() => handleListItemClick(recipe)}>
                           <ListItem key={creatorRecipe.id} >
                             <ListItemText
                               primary={recipe.title}

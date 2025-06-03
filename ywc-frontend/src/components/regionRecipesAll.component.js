@@ -251,9 +251,11 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
               ).map((recipe) => (
               <>
                 <ListItemButton onClick={() => handleListItemClick(recipe)}>
-                  <ListItem key={recipe.id} >
+                  <ListItem >
                     <ListItemText
+
                       primary={recipe.title}
+                      // secondary={recipe.id}
                       secondary={recipe.description}
                       secondaryTypographyProps={{ 
                         style: {
@@ -425,11 +427,12 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
                               return 0; 
                             })
                           ).map((recipe, index) => (   
-                          <ListItemButton onClick={() => handleListItemClick(regionRecipe)}>
+                          <ListItemButton onClick={() => handleListItemClick(recipe)}>
                             <ListItem key={regionRecipe.id} >
                               <ListItemText
                                 primary={recipe.title}
-                                secondary={recipe.description}
+                                secondary={recipe.id}
+                                // secondary={recipe.description}
                                 secondaryTypographyProps={{ 
                                   style: {
                                     whiteSpace: 'nowrap',
