@@ -20,7 +20,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
   const [regionSearch, setRegionSearch] = useState(false);
 	const [countrySearch, setCountrySearch] = useState(false)
 	const [currentRegionName, setCurrentRegionName] = useState("")
- 
+ const [justUserRegionRecipes, setJustUserRegionRecipes] = useState([])
 
 
   const currentUser = AuthService.getCurrentUser();
@@ -38,6 +38,19 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
     .then(response => {
       setUserRegionRecipes(response.data);
       console.log(response.data);
+
+      const justRecipes = [];
+
+      let region = response.data
+      for (let i = 0; i < region.length; i++) {
+      
+        if (region[i].recipe.length > 0) {
+          justRecipes.push(region[i])
+        }
+      }
+      
+      setJustUserRegionRecipes(justRecipes)
+      console.log(justUserRegionRecipes)
     })
     .catch(e => {
       console.log(e);
@@ -60,8 +73,8 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
   //pagination functions for regionRecipes
   let [page, setPage] = useState(1);
   const PER_PAGE = 5;
-  const count = Math.ceil(userRegionRecipes.length / PER_PAGE);
-  const _DATA = usePagination(userRegionRecipes, PER_PAGE);
+  const count = Math.ceil(justUserRegionRecipes.length / PER_PAGE);
+  const _DATA = usePagination(justUserRegionRecipes, PER_PAGE);
 
   const handleChange = (e, p) => {
     setPage(p);
@@ -69,6 +82,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
   };
 
 
+  //search functions for country and region
   const findByCountry = () => {
     const searchCountry = selectedRegion.country
     console.log(selectedRegion.country)
@@ -89,6 +103,7 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
   const findByRegion = () => {
     const searchRegionName = currentRegionName
     console.log(currentRegionName)
+
     UserRecipeDataService.findByRegionName(userId, searchRegionName)
     .then (response => {
       setUserRecipesRegion(response.data);
@@ -343,10 +358,22 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
             />
             <Box p="10" pt="3" spacing={2}>
               {_DATA &&
-                _DATA.currentData().map(regionRecipe => {
+                Array.from(
+                  _DATA.currentData().sort((a, b)=> {
+                    if (a.country.toLowerCase ()< b.country.toLowerCase()) {
+                      return -1;
+                    }
+                    if (a.country.toLowerCase() > b.country.toLowerCase()) {
+                      return 1;
+                    }
+                    return 0; 
+                  })
+                ).map(regionRecipe => {
                   return (
                   <>
-                    <Typography variant="h5">{regionRecipe.country}</Typography>
+                   {regionRecipe.recipe &&
+                      <Typography variant="h5">{regionRecipe.country}</Typography>
+                   }
                     {regionRecipe.recipe.length  <= 0 && 
                       <Typography variant="subtitle1">
                         There are no recipes for this region yet.
@@ -374,7 +401,17 @@ const UserRegionRecipesAll = ({clickTitle, clickCreator})=> {
                       }}
                     >
                       {regionRecipe.recipe &&
-                        regionRecipe.recipe.map((recipe, index) => (    
+                        Array.from(
+                          regionRecipe.recipe.sort((a, b) => {
+                            if (a.title.toLowerCase ()< b.title.toLowerCase()) {
+                              return -1;
+                            }
+                            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+                              return 1;
+                            }
+                            return 0; 
+                          })
+                        ).map((recipe, index) => (    
                           <ListItemButton onClick={() => handleListItemClick(recipe)}>
                             <ListItem key={regionRecipe.id} >
                               <ListItemText
