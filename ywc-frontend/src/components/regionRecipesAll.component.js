@@ -431,8 +431,7 @@ const RegionRecipesAll = ({clickTitle, clickCreator, clickContributor})=> {
                             <ListItem key={regionRecipe.id} >
                               <ListItemText
                                 primary={recipe.title}
-                                secondary={recipe.id}
-                                // secondary={recipe.description}
+                                secondary={recipe.description}
                                 secondaryTypographyProps={{ 
                                   style: {
                                     whiteSpace: 'nowrap',
